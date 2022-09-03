@@ -1,0 +1,10 @@
+.box-title {
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+.box-content {
+    overflow: hidden;
+    background-color: var(--color-main);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
