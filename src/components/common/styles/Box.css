@@ -1,10 +1,33 @@
 .box-title {
     font-size: 18px;
-    padding-bottom: 10px;
+    padding: 0 10px 35px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .box-content {
     overflow: hidden;
     background-color: var(--color-main);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
+}
+.box-menu-more {
+    position: relative;
+}
+.box-menu-more .menu-btn {
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 50%;
+    transition-duration: var(--transition-duration);
+}
+.box-menu-more .menu-btn svg {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+.box-menu-more .menu-btn:hover {
+    background-color: var(--color-main);
 }

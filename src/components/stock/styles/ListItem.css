@@ -3,6 +3,7 @@
     justify-content: space-between;
     gap: 12px;
     padding: 8px;
+    align-items: center;
     cursor: pointer;
     transition-duration: var(--transition-duration);
     border-bottom: 1px solid var(--color-secondary);
@@ -13,8 +14,8 @@
 }
 
 .list-item__logo {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 }
 .list-item__logo img {
     width: 100%;
