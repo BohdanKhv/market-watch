@@ -541,6 +541,10 @@ body {
   min-width: 0;
 }
 
+.box-shadow {
+  box-shadow: var(--box-shadow);
+}
+
 @media (max-width: 769px) {
   .content {
     padding-left: 16px;

@@ -26,6 +26,11 @@ const Home = () => {
               ))}
             </div>
           </Box>
+          <div className="flex mt-3 justify-between flex-wrap gap-3">
+            {testStock.slice(4,8).map((item, index) => (
+              <PopularStock key={index} item={item} className="box-shadow" />
+            ))}
+          </div>
         </div>
         <div className="flex flex-col flex-grow-1 gap-5">
           <Box title="Portfolio" size="lg">

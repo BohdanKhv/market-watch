@@ -1,6 +1,7 @@
 .popular-stock-card {
     display: flex;
     flex-grow: 1;
+    background-color: var(--color-main);
     flex-direction: column;
     gap: 12px;
     cursor: pointer;

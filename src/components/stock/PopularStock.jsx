@@ -1,8 +1,8 @@
 import './styles/PopularStock.css'
 
-const PopularStock = ({item}) => {
+const PopularStock = ({item, className}) => {
     return (
-        <div className="popular-stock-card">
+        <div className={`popular-stock-card${className ? ` ${className}` : ''}`}>
             <div className="popular-stock-logo">
                 <img src={item.logo} alt="logo" />
             </div>
