@@ -1,7 +1,7 @@
 [
     {
         "symbol": "AAPL",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/apple--600.png",
         "name": "Apple Inc.",
         "priceChange": "-1.23",
         "price": "120.0"
@@ -9,7 +9,7 @@
     {
         "symbol": "MSFT",
         "name": "Microsoft Corp.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/microsoft--600.png",
         "price": "101.0",
         "priceChange": "1.00",
         "quantity": "10"
@@ -17,7 +17,7 @@
     {
         "symbol": "GOOG",
         "name": "Google Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/alphabet--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -25,7 +25,7 @@
     {
         "symbol": "AMZN",
         "name": "Amazon.com Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/amazon--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -33,7 +33,7 @@
     {
         "symbol": "FB",
         "name": "Facebook Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/facebook--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -41,7 +41,7 @@
     {
         "symbol": "TSLA",
         "name": "Tesla Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/tesla--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -49,7 +49,7 @@
     {
         "symbol": "NFLX",
         "name": "Netflix Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/netflix--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -57,7 +57,7 @@
     {
         "symbol": "NVDA",
         "name": "NVIDIA Corp.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/nvidia--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -65,7 +65,7 @@
     {
         "symbol": "PYPL",
         "name": "PayPal Holdings Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/paypal--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -73,7 +73,7 @@
     {
         "symbol": "ADBE",
         "name": "Adobe Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/adobe--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -81,7 +81,7 @@
     {
         "symbol": "CRM",
         "name": "Salesforce.com Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/salesforce--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -89,7 +89,7 @@
     {
         "symbol": "INTC",
         "name": "Intel Corp.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/intel--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -97,7 +97,7 @@
     {
         "symbol": "CSCO",
         "name": "Cisco Systems Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/cisco--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -105,7 +105,7 @@
     {
         "symbol": "QCOM",
         "name": "QUALCOMM Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/qualcomm--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -113,7 +113,7 @@
     {
         "symbol": "AVGO",
         "name": "Broadcom Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/broadcom--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -121,7 +121,7 @@
     {
         "symbol": "TXN",
         "name": "Texas Instruments Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/apple--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -129,7 +129,7 @@
     {
         "symbol": "AMGN",
         "name": "Amgen Inc.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/amgen--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -137,7 +137,7 @@
     {
         "symbol": "COST",
         "name": "Costco Wholesale Corp.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/apple--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -145,7 +145,7 @@
     {
         "symbol": "SBUX",
         "name": "Starbucks Corp.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/starbucks--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -153,7 +153,7 @@
     {
         "symbol": "CMCSA",
         "name": "Comcast Corp.",
-        "logo": "https://logos.covalenthq.com/tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/comcast--600.png",
         "price": "53.0",
         "priceChange": "-26.00",
         "quantity": "10"

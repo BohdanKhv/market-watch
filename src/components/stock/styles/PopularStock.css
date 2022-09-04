@@ -1,0 +1,26 @@
+.popular-stock-card {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    border-radius: var(--border-radius-sm);
+    transition-duration: var(--transition-duration);
+    padding: 20px;
+}
+.popular-stock-name h5 {
+    opacity: .5;
+    font-weight: 400;
+}
+.popular-stock-card:hover {
+    background-color: var(--color-secondary);
+}
+.popular-stock-logo {
+    width: 50px;
+    height: 50px;
+}
+.popular-stock-logo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}

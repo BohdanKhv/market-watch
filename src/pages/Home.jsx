@@ -1,6 +1,6 @@
 import { trashIcon, shareIcon } from '../assets/icons'
 import testStock from '../assets/testStock.json'
-import { Box, ListItem } from '../components'
+import { Box, PopularStock } from '../components'
 import './styles/Home.css'
 
 const listMenuItems = [
@@ -19,16 +19,16 @@ const Home = () => {
     <div className="content-body">
       <div className="home-page flex justify-between gap-5">
         <div className="flex-grow-2">
-          <Box title="Stock Watchlist" menuItems={listMenuItems} size="lg">
-            <div className="flex flex-col">
-              {testStock.map((item, index) => (
-                <ListItem key={index} item={item} />
+          <Box title="Popular this week" menuItems={listMenuItems} size="lg">
+            <div className="flex p-2 justify-between flex-wrap">
+              {testStock.slice(0,4).map((item, index) => (
+                <PopularStock key={index} item={item} />
               ))}
             </div>
           </Box>
         </div>
         <div className="flex flex-col flex-grow-1 gap-5">
-          <Box title="Portfolio">
+          <Box title="Portfolio" size="lg">
             <div className="p-3">
               <h2>$ 800.55</h2>
             </div>
@@ -49,7 +49,7 @@ const Home = () => {
                   </h4>
                   <div className="flex justify-between align-center">
                     <h3 className="text-success pt-1 weight-400">
-                      $ 25.50
+                      $ +25.50
                     </h3>
                     <h5 className="text-success pt-1 weight-400">
                       +5.55%

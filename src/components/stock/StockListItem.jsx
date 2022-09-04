@@ -1,6 +1,6 @@
-import './styles/ListItem.css'
+import './styles/StockListItem.css'
 
-const ListItem = ({item}) => {
+const StockListItem = ({item}) => {
     return (
         <div className="list-item">
             <div className="list-item__logo">
@@ -18,4 +18,4 @@ const ListItem = ({item}) => {
     )
 }
 
-export default ListItem
+export default StockListItem
