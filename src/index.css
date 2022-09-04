@@ -57,7 +57,7 @@ body {
   padding-left: 116px;
 }
 .content-body {
-  padding: 50px 0;
+  padding: 0px 0;
 }
 
 .app {
@@ -145,4 +145,10 @@ body {
 
 .border-bottom {
   border-bottom: 1px solid var(--color-secondary);
+}
+
+@media (max-width: 769px) {
+  .content {
+    padding-left: 16px;
+  }
 }

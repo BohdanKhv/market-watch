@@ -1,10 +1,10 @@
-import { homeIcon, userIcon, walletIcon, searchIcon, gridIcon, homeFillIcon, starEmptyIcon, starFillIcon, walletFillIcon } from "./icons"
+import { homeIcon, userIcon, walletIcon, searchIcon, gridIcon, homeFillIcon, starEmptyIcon, starFillIcon, walletFillIcon, settingsIcon, marketIcon, marketFillIcon, settingsFillIcon } from "./icons"
 
 const sideNav = [
     {
-        title: 'Home',
-        icon: homeIcon,
-        fillIcon: homeFillIcon,
+        title: 'Market',
+        icon: marketIcon,
+        fillIcon: marketFillIcon,
         path: '/',
     },
     {
@@ -20,10 +20,10 @@ const sideNav = [
         path: '/portfolio',
     },
     {
-        title: 'Stocks',
-        icon: searchIcon,
-        fillIcon: searchIcon,
-        path: '/stocks',
+        title: 'Settings',
+        icon: settingsIcon,
+        fillIcon: settingsFillIcon,
+        path: '/settings',
     },
 ]
 

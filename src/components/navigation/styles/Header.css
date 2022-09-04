@@ -1,0 +1,42 @@
+.header-wrapper {
+    margin-left: 100px;
+    overflow: hidden;
+    padding-bottom: 50px;
+}
+.header {
+    background-color: var(--color-main);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 16px;
+    z-index: 101;
+    position: relative;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+}
+
+.header-left {
+    flex-grow: 1;
+}
+
+
+@media (max-width: 769px) {
+    .header-wrapper {
+        margin-left: 0;
+    }
+    .header {
+        flex-direction: column;
+        padding: 8px 16px;
+        height: auto;
+    }
+    .header-left {
+        width: 100%;
+        order: 2;
+    }
+    .header-right {
+        width: 100%;
+        text-align: end;
+        order: 1;
+    }
+}
