@@ -1,6 +1,6 @@
 .box-title {
     font-size: 18px;
-    padding: 0 10px 35px 10px;
+    padding: 0 10px 20px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,4 +30,10 @@
 }
 .box-menu-more .menu-btn:hover {
     background-color: var(--color-main);
+    box-shadow: var(--box-shadow-sm);
+}
+
+.box-title.lg h3 {
+    font-size: 34px;
+    font-weight: 800;
 }

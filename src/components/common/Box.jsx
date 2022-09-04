@@ -3,12 +3,12 @@ import { Menu } from '../';
 import { moreIcon } from '../../assets/icons';
 import './styles/Box.css'
 
-const Box = ({children, title, menuItems}) => {
+const Box = ({children, title, menuItems, size}) => {
     const [open, setOpen] = useState(false);
 
     return (
         <div className="box">
-            <div className="box-title">
+            <div className={`box-title${size ? ` ${size}`: ''}`}>
                 <h3>{title}</h3>
                 {menuItems &&
                     <div className="box-menu-more">

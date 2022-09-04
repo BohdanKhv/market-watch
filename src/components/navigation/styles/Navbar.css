@@ -33,6 +33,12 @@
     padding-bottom: 16px;
 }
 
+.navbar .logo .company {
+    height: 34px;
+    width: 100px;
+    font-size: 20px;
+}
+
 .navbar .logo:hover {
     filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.15));
 }

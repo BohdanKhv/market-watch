@@ -7,7 +7,7 @@ function App() {
     <Router>
       <Navbar/>
       <Header/> 
-      <div className="container content">
+      <div className="content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/watchlist" element={<Watchlist />} />
