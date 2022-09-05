@@ -218,7 +218,7 @@ body {
 }
 .btn.btn-secondary {
   color: var(--text-dark);
-  background-color: var(--text-light);
+  background-color: transparent;
 }
 .btn.btn-secondary:active,
 .btn.btn-secondary:hover {
@@ -644,26 +644,34 @@ input[type="number"] {
   .flex-sm-wrap {
     flex-wrap: wrap;
   }
+
   .content {
     padding-left: 16px;
     padding-right: 16px;
     padding-bottom: 80px;
   }
+
   .flex-sm-col {
     flex-direction: column;
   }
   .flex-sm-row {
     flex-direction: row;
   }
+
   .order-sm-1 {
     order: 1;
   }
   .order-sm-2 {
     order: 2;
   }
+  .order-sm-3 {
+    order: 3;
+  }
+
   .flex-grow-sm-1 {
     flex-grow: 1;
   }
+
   h2 {
     font-size: 18px;
   }

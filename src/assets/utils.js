@@ -53,6 +53,18 @@ const getPercentagePnl = (portfolio) => {
     return result.toFixed(2);
 }
 
+const getPercentHoldings = (portfolio) => {
+    const portfolioValue = getTotalPortfolioValue(portfolio);
+    const result = portfolio.map(i => {
+        const data = {
+            percentage: (+i.price * +i.quantity) / portfolioValue * 100,
+            item: i
+        }
+        return data
+    }).sort((a, b) => b.percentage - a.percentage);
+    return result;
+}
+
 export {
     addCommaToNumber,
     numberFormatter,
@@ -61,4 +73,5 @@ export {
     getTopGain,
     getPnl,
     getPercentagePnl,
+    getPercentHoldings
 };

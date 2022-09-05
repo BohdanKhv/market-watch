@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Navbar, Header } from "./components";
-import { Watchlist, Portfolio, Settings } from "./pages";
+import { Watchlist, Portfolio, Settings, Share } from "./pages";
 
 function App() {
   const theme = useSelector((state) => state.local.theme);
@@ -24,6 +24,7 @@ function App() {
           <Route path="/" element={<Watchlist />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/share" element={<Share />} />
         </Routes>
       </div>
     </Router>

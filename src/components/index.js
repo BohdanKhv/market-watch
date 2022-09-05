@@ -9,6 +9,9 @@ import StockListItem from "./stock/StockListItem";
 import PopularStock from "./stock/PopularStock";
 import StockPortfolio from "./stock/StockPortfolio";
 import AddToPortfolio from "./stock/AddToPortfolio";
+import Holdings from "./stock/Holdings";
+import Summary from "./stock/Summary";
+import Total from "./stock/Total";
 
 import Input from "./input/Input";
 import SearchField from "./input/SearchField";
@@ -25,6 +28,9 @@ export {
     PopularStock,
     StockPortfolio,
     AddToPortfolio,
+    Holdings,
+    Summary,
+    Total,
 
     Input,
     SearchField
