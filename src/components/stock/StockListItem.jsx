@@ -4,7 +4,7 @@ import { walletIcon } from '../../assets/icons';
 import { AddToPortfolio } from '../'
 import './styles/StockListItem.css'
 
-const StockListItem = ({item, menuItems, index}) => {
+const StockListItem = ({item, menuItems, index, className}) => {
     const [addToPortfolioOpen, setAddToPortfolioOpen] = useState(false)
     const [open, setOpen] = useState(false);
 
@@ -20,7 +20,7 @@ const StockListItem = ({item, menuItems, index}) => {
     ]
 
     return (
-        <div className="list-item-wrapper">
+        <div className={`list-item-wrapper${className ? ` ${className}` : ''}`}>
             <AddToPortfolio modalIsOpen={addToPortfolioOpen} setModalIsOpen={setAddToPortfolioOpen} item={item} />
             {open &&
                 <Menu open={open} setOpen={setOpen} items={newMenuItems} index={index+1}/>

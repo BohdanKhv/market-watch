@@ -1,6 +1,6 @@
 .header-wrapper {
     margin-left: 100px;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding-bottom: 25px;
 }
 .header {
@@ -12,7 +12,7 @@
     padding: 0 16px;
     z-index: 101;
     position: relative;
-    box-shadow: var(--box-shadow);
+    box-shadow: 31px 0 10px 20px rgb(0 0 0 / 5%);
     align-items: center;
 }
 
@@ -25,6 +25,11 @@
 .header-logo {
     width: 40px;
     height: 40px;
+}
+
+.header-search-focus .header-right,
+.header-search-focus .header-logo-wrapper {
+    display: none;
 }
 
 

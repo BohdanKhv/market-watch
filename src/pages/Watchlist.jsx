@@ -24,29 +24,31 @@ const Watchlist = () => {
 
   return (
     <div className="content-body">
-      <div className="flex justify-between gap-4 flex-sm-col">
-        <div className="flex-grow-2">
+      <div className="flex justify-between gap-5 flex-sm-col">
+        <div className="flex-grow-2 order-sm-2">
           <Box title="Watchlist" menuItems={watchlistMenuItems} size="lg">
             <div className="flex flex-col">
               {testStock.map((item, index) => (
-                <StockListItem key={index} item={item} menuItems={listMenuItems} index={index}/>
+                <StockListItem key={index} item={item} menuItems={listMenuItems} index={index} className={index+1 !== testStock.length ? 'border-bottom' : ""}/>
               ))}
             </div>
           </Box>
         </div>
-        <div className="flex flex-col flex-grow-1 gap-5">
+        <div className="flex flex-col flex-grow-1 gap-5 order-sm-1">
           <Box title="Performance" size="lg">
-            <div className="border-bottom">
-              <h4 className="weight-400 p-3">
-                Best stock today
-              </h4>
-              <PopularStock item={testStock.sort((a, b) => +b.priceChange - a.priceChange)[0]} menuItems={listMenuItems} />
-            </div>
-            <div>
-              <h4 className="weight-400 p-3">
-                Worst stock today
-              </h4>
-              <PopularStock item={testStock.sort((a, b) => +a.priceChange - b.priceChange)[0]} menuItems={listMenuItems} />
+            <div className="flex flex-col flex-sm-row">
+              <div className="flex-grow-1">
+                <h4 className="weight-500 p-3">
+                  Best stock of the day
+                </h4>
+                <PopularStock item={testStock.sort((a, b) => +b.priceChange - a.priceChange)[0]} menuItems={listMenuItems} />
+              </div>
+              <div className="flex-grow-1">
+                <h4 className="weight-500 p-3">
+                  Worst stock of the day
+                </h4>
+                <PopularStock item={testStock.sort((a, b) => +a.priceChange - b.priceChange)[0]} menuItems={listMenuItems} />
+              </div>
             </div>
           </Box>
         </div>

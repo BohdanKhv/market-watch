@@ -11,6 +11,7 @@ import StockPortfolio from "./stock/StockPortfolio";
 import AddToPortfolio from "./stock/AddToPortfolio";
 
 import Input from "./input/Input";
+import SearchField from "./input/SearchField";
 
 export {
     Navbar,
@@ -25,5 +26,6 @@ export {
     StockPortfolio,
     AddToPortfolio,
 
-    Input
+    Input,
+    SearchField
 }

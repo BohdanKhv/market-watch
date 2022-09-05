@@ -99,6 +99,9 @@ body {
 .pos-relative {
   position: relative;
 }
+.d-none {
+  display: none;
+}
 
 /* Flex */
 
@@ -277,7 +280,7 @@ input[type="number"] {
   margin: 1rem;
 }
 .m-4 {
-  margin: 1.5rem;
+  margin: 1.25rem;
 }
 .m-5 {
   margin: 3rem;
@@ -296,7 +299,7 @@ input[type="number"] {
   margin-top: 1rem;
 }
 .mt-4 {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }
 .mt-5 {
   margin-top: 3rem;
@@ -315,7 +318,7 @@ input[type="number"] {
   margin-bottom: 1rem;
 }
 .mb-4 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 .mb-5 {
   margin-bottom: 3rem;
@@ -334,7 +337,7 @@ input[type="number"] {
   margin-left: 1rem;
 }
 .ms-4 {
-  margin-left: 1.5rem;
+  margin-left: 1.25rem;
 }
 .ms-5 {
   margin-left: 3rem;
@@ -353,7 +356,7 @@ input[type="number"] {
   margin-right: 1rem;
 }
 .me-4 {
-  margin-right: 1.5rem;
+  margin-right: 1.25rem;
 }
 .me-5 {
   margin-right: 3rem;
@@ -376,8 +379,8 @@ input[type="number"] {
   margin-left: 1rem;
 }
 .mx-4 {
-  margin-right: 1.5rem;
-  margin-left: 1.5rem;
+  margin-right: 1.25rem;
+  margin-left: 1.25rem;
 }
 .mx-5 {
   margin-right: 3rem;
@@ -401,8 +404,8 @@ input[type="number"] {
   margin-bottom: 1rem;
 }
 .my-4 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 .my-5 {
   margin-top: 3rem;
@@ -424,7 +427,7 @@ input[type="number"] {
   padding: 1rem;
 }
 .p-4 {
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 .p-5 {
   padding: 3rem;
@@ -443,7 +446,7 @@ input[type="number"] {
   padding-top: 1rem;
 }
 .pt-4 {
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
 }
 .pt-5 {
   padding-top: 3rem;
@@ -462,7 +465,7 @@ input[type="number"] {
   padding-bottom: 1rem;
 }
 .pb-4 {
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
 }
 .pb-5 {
   padding-bottom: 3rem;
@@ -481,7 +484,7 @@ input[type="number"] {
   padding-left: 1rem;
 }
 .ps-4 {
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
 }
 .ps-5 {
   padding-left: 3rem;
@@ -500,7 +503,7 @@ input[type="number"] {
   padding-right: 1rem;
 }
 .pe-4 {
-  padding-right: 1.5rem;
+  padding-right: 1.25rem;
 }
 .pe-5 {
   padding-right: 3rem;
@@ -548,8 +551,8 @@ input[type="number"] {
   padding-bottom: 1rem;
 }
 .py-4 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 .py-5 {
   padding-top: 3rem;
@@ -584,6 +587,21 @@ input[type="number"] {
   box-shadow: var(--box-shadow);
 }
 
+.border-radius {
+  border-radius: var(--border-radius);
+}
+.border-radius-sm {
+  border-radius: var(--border-radius-sm);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.outline {
+  outline: 1px solid var(--color-secondary);
+}
+
 @media (max-width: 769px) {
   .content {
     padding-left: 16px;
@@ -595,5 +613,11 @@ input[type="number"] {
   }
   .flex-sm-row {
     flex-direction: row;
+  }
+  .order-sm-1 {
+    order: 1;
+  }
+  .order-sm-2 {
+    order: 2;
   }
 }

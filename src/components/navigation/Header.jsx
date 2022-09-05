@@ -1,13 +1,12 @@
 import { useState } from 'react'
-import { Input } from '../'
-import { searchIcon } from '../../assets/icons';
+import { SearchField } from '../'
 import './styles/Header.css'
 
 const Header = () => {
-    const [search, setSearch] = useState('');
+    const [searchFocused, setSearchFocused] = useState(false);
 
     return (
-        <div className="header-wrapper">
+        <div className={`header-wrapper${searchFocused ? ' header-search-focus' : ''}`}>
             <div className="header">
                 <div className="header-left">
                     <div className="header-logo-wrapper">
@@ -18,13 +17,7 @@ const Header = () => {
                             STOKIN
                         </h3>
                     </div>
-                    <Input
-                        type="text"
-                        placeholder="Search for stocks"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        icon={searchIcon}
-                    />
+                    <SearchField setSearchFocused={setSearchFocused}/>
                 </div>
                 <div className="header-right">
                     <div className="date">

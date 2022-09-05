@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar, Header } from "./components";
-import { Watchlist, Portfolio } from "./pages";
+import { Watchlist, Portfolio, Settings } from "./pages";
 
 function App() {
   // const theme = useSelector((state) => state.local.theme);
@@ -30,6 +30,7 @@ useEffect(() => {
         <Routes>
           <Route path="/" element={<Watchlist />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
     </Router>
