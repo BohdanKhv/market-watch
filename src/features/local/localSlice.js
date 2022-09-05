@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const theme = localStorage.getItem("theme");
-const favorite = localStorage.getItem("favorite");
-const portfolio = localStorage.getItem("portfolio");
+const favorite = JSON.parse(localStorage.getItem("favorite"));
+const portfolio = JSON.parse(localStorage.getItem("portfolio"));
 
 const initialState = {
     theme: theme || "light",

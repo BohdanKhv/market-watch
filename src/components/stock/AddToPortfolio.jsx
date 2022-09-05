@@ -1,17 +1,32 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
 import { Modal, Input } from '../'
+import { addToPortfolio } from "../../features/local/localSlice"
 
-const AddToPortfolio = ({modalIsOpen, setModalIsOpen, item}) => {
+const AddToPortfolio = ({modalIsOpen, setModalIsOpen, item, setAlert}) => {
     const [quantity, setQuantity] = useState(0)
     const [price, setPrice] = useState(0)
+    const dispatch = useDispatch()
+
+    const handleAddToPortfolio = () => {
+        const data = {
+            symbol: item.symbol,
+            quantity: quantity,
+            price: price
+        }
+        dispatch(addToPortfolio(data));
+        setModalIsOpen(false);
+        setAlert(`${item.symbol} added to portfolio`);
+    }
 
     return (
+        <>
         <Modal
             modalIsOpen={modalIsOpen}
             setModalIsOpen={setModalIsOpen}
             contentLabel={`${item ? item.symbol : ''}`}
             actionBtnText="Add"
-            onSubmit={() => console.log('submit')}
+            onSubmit={handleAddToPortfolio}
             actionDangerBtnText="Cancel"
             onSubmitDanger={() => {
                 setModalIsOpen(false);
@@ -31,6 +46,7 @@ const AddToPortfolio = ({modalIsOpen, setModalIsOpen, item}) => {
                                 setQuantity(e.target.value);
                             }
                         }}
+                        onFocus={(e) => e.target.select()}
                         placeholder="Quantity"
                     />
                 </div>
@@ -46,11 +62,13 @@ const AddToPortfolio = ({modalIsOpen, setModalIsOpen, item}) => {
                                 setPrice(e.target.value);
                             }
                         }}
+                        onFocus={(e) => e.target.select()}
                         placeholder="Price"
                     />  
                 </div>
             </div>
         </Modal>
+        </>
     )
 }
 

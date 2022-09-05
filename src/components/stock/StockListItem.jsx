@@ -4,7 +4,7 @@ import { walletIcon } from '../../assets/icons';
 import { AddToPortfolio } from '../'
 import './styles/StockListItem.css'
 
-const StockListItem = ({item, menuItems, index, className}) => {
+const StockListItem = ({item, menuItems, index, className, setAlert}) => {
     const [addToPortfolioOpen, setAddToPortfolioOpen] = useState(false)
     const [open, setOpen] = useState(false);
 
@@ -25,9 +25,19 @@ const StockListItem = ({item, menuItems, index, className}) => {
             onClick={() => setOpen(!open)}
             data-menu-index={index+1}
         >
-        <AddToPortfolio modalIsOpen={addToPortfolioOpen} setModalIsOpen={setAddToPortfolioOpen} item={item} />
+        <AddToPortfolio
+            modalIsOpen={addToPortfolioOpen}
+            setModalIsOpen={setAddToPortfolioOpen}
+            item={item} 
+            setAlert={setAlert}
+        />
         {open &&
-            <Menu open={open} setOpen={setOpen} items={newMenuItems} index={index+1}/>
+            <Menu
+                open={open}
+                setOpen={setOpen}
+                items={newMenuItems}
+                index={index+1}
+            />
         }
             <div className="list-item-logo">
                 <img src={item.logo} alt={item.name} />

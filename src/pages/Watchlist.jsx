@@ -1,9 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { shareIcon, trashIcon } from '../assets/icons'
 import testStock from '../assets/testStock.json'
-import { Box, StockListItem, PopularStock } from '../components'
+import { Box, StockListItem, PopularStock, Alert } from '../components'
 
 const Watchlist = () => {
+  const [alert, setAlert] = useState('')
+
   const listMenuItems = [
     {
       title: "Delete",
@@ -30,6 +32,7 @@ const Watchlist = () => {
 
   return (
     <div className="content-body">
+      {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
       <div className="flex justify-between gap-5 flex-sm-col">
         <div className="flex-grow-2 order-sm-2">
           <Box title="Watchlist" menuItems={watchlistMenuItems} size="lg">
@@ -40,6 +43,7 @@ const Watchlist = () => {
                   item={item}
                   menuItems={listMenuItems}
                   index={index}
+                  setAlert={setAlert}
                   className={
                     index === 0 ? 'border-t-r border-bottom' :
                     index+1 === testStock.length ? 'border-b-r' : 'border-bottom'

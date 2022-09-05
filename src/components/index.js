@@ -4,6 +4,7 @@ import Header from "./navigation/Header";
 import Box from "./common/Box";
 import Menu from "./common/Menu";
 import Modal from "./common/Modal";
+import Alert from "./common/Alert";
 
 import StockListItem from "./stock/StockListItem";
 import PopularStock from "./stock/PopularStock";
@@ -23,6 +24,7 @@ export {
     Box,
     Menu,
     Modal,
+    Alert,
 
     StockListItem,
     PopularStock,
