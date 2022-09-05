@@ -1,48 +1,44 @@
 import { useState } from 'react'
 import { Menu } from '../';
-import { moreIcon, starEmptyIcon, walletIcon } from '../../assets/icons';
+import { walletIcon } from '../../assets/icons';
+import { AddToPortfolio } from '../'
 import './styles/StockListItem.css'
 
-const StockListItem = ({item}) => {
+const StockListItem = ({item, menuItems, index}) => {
+    const [addToPortfolioOpen, setAddToPortfolioOpen] = useState(false)
     const [open, setOpen] = useState(false);
 
-    const menuItems = [
+    const newMenuItems = [
         {
-            title: 'Add to watchlist',
-            icon: starEmptyIcon,
-            onClick: () => {
-                console.log('Add to watchlist');
-                setOpen(false);
-            }
-        },
-        {
-            title: 'Add to portfolio',
+            title: "Add to Portfolio",
             icon: walletIcon,
-            onClick: () => {
-                console.log('Add to portfolio');
-                setOpen(false);
+            onClick: (item) => {
+                setAddToPortfolioOpen(true);
             }
-        }
+            },
+        ...menuItems
     ]
 
     return (
         <div className="list-item-wrapper">
+            <AddToPortfolio modalIsOpen={addToPortfolioOpen} setModalIsOpen={setAddToPortfolioOpen} item={item} />
             {open &&
-                <Menu open={open} setOpen={setOpen} items={menuItems}/>
+                <Menu open={open} setOpen={setOpen} items={newMenuItems} index={index+1}/>
             }
-            <div className="list-item menu-btn"
+            <div className={`list-item menu-btn gap-3${open ? ' bg-secondary' : ''}`}
                 onClick={() => setOpen(!open)}
+                data-menu-index={index+1}
             >
-                <div className="list-item__logo">
+                <div className="list-item-logo">
                     <img src={item.logo} alt={item.name} />
                 </div>
-                <div className="list-item__name">
-                    <div className="list-item__symbol">{item.symbol}</div>
-                    <div className="list-item__name__title">{item.name}</div>
+                <div className="list-item-name">
+                    <div className="list-item-symbol">{item.symbol}</div>
+                    <div className="list-item-name-title">{item.name}</div>
                 </div>
-                <div className="list-item__price">
-                    <div className="list-item__last__price">{item.price}</div>
-                    <div className={`list-item__change${item.priceChange > 0 ? ' list-item__last__change-positive' : item.priceChange < 0 ? ' list-item__last__change-negative' : ''}`}>{item.priceChange > 0 && '+'}{item.priceChange}</div>
+                <div className="list-item-price">
+                    <div className="list-item-last-price">{item.price}</div>
+                    <div className={`list-item-change${item.priceChange > 0 ? ' list-item-last-change-positive' : item.priceChange < 0 ? ' list-item-last-change-negative' : ''}`}>{item.priceChange > 0 && '+'}{item.priceChange}</div>
                 </div>
             </div>
         </div>

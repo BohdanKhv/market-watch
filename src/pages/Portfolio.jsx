@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react'
 import { trashIcon, shareIcon } from '../assets/icons'
-import testStock from '../assets/testStock.json'
-import { Box, StockListItem } from '../components'
+import testPortfolio from '../assets/testPortfolio.json'
+import { getTotalPortfolioValue, addCommaToNumber, getTopLoss, getTopGain, getPnl, getPercentagePnl } from '../assets/utils'
+import { Box, StockPortfolio } from '../components'
 
 const listMenuItems = [
   {
@@ -14,44 +16,66 @@ const listMenuItems = [
 ]
 
 const Portfolio = () => {
+  const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
+  const [topLoss, setTopLoss] = useState(0);
+  const [topGain, setTopGain] = useState(0);
+  const [pnl, setPnl] = useState(0);
+  const [percentPnl, setPercentPnl] = useState(0);
+
+  useEffect(() => {
+    setTotalPortfolioValue(getTotalPortfolioValue(testPortfolio));
+    setTopLoss(getTopLoss(testPortfolio));
+    setTopGain(getTopGain(testPortfolio));
+    setPnl(getPnl(testPortfolio));
+    setPercentPnl(getPercentagePnl(testPortfolio));
+  }, [])
+
   return (
     <div className="content-body">
-      <div className="flex justify-between gap-5">
+      <div className="flex justify-between gap-4 flex-sm-col">
         <div className="flex-grow-2">
-          <Box title="Watchlist" menuItems={listMenuItems} size="lg">
-            <div className="flex flex-col">
-              {testStock.map((item, index) => (
-                <StockListItem key={index} item={item} />
+          <Box title="Portfolio" menuItems={listMenuItems} size="lg">
+            <div className="flex flex-col justify-between flex-wrap">
+              {testPortfolio.slice(4,8).map((item, index) => (
+                <StockPortfolio key={index} item={item} />
               ))}
             </div>
           </Box>
         </div>
-        <div className="flex flex-col flex-grow-1 gap-5">
-          <Box title="Portfolio">
+        <div className="flex flex-col flex-grow-1 gap-5 flex-sm-row">
+          <Box title="Value" size="lg">
             <div className="p-3">
-              <h2>$ 800.55</h2>
+              <h4 className="text-secondary weight-400">
+                Market Value
+              </h4>
+              <h2 className="pt-1 weight-400 px-1">$ {addCommaToNumber(totalPortfolioValue)}</h2>
             </div>
           </Box>
           <Box title="Summary">
-            <div className="p-3 flex flex-col gap-3">
+            <div className="p-3 flex flex-col gap-4">
                 <div>
                   <h4 className="text-secondary weight-400">
                     P/L
                   </h4>
-                  <h3 className="pt-1 weight-400">
-                    $ 100.55
-                  </h3>
+                  <div className={`flex justify-between align-center pt-2 px-1 ${pnl > 0 ? 'text-success' : pnl < 0 ? 'text-danger' : 'text-secondary' }`}>
+                    <h3 className="weight-400">
+                      $ {addCommaToNumber(pnl)}
+                    </h3>
+                    <h5 className="fs-12 weight-400">
+                      {percentPnl > 0 ? '+' : percentPnl < 0 ? '-' : ''} {percentPnl}%
+                    </h5>
+                  </div>
                 </div>
                 <div>
                   <h4 className="text-secondary weight-400">
                     Top Gain
                   </h4>
-                  <div className="flex justify-between align-center">
-                    <h3 className="text-success pt-1 weight-400">
-                      $ 25.50
+                  <div className="flex justify-between align-center pt-2 px-1">
+                    <h3 className="weight-400">
+                      {topGain?.item?.symbol}
                     </h3>
                     <h5 className="text-success pt-1 weight-400">
-                      +5.55%
+                      $ {addCommaToNumber(topGain.amount)}
                     </h5>
                   </div>
                 </div>
@@ -59,12 +83,12 @@ const Portfolio = () => {
                   <h4 className="text-secondary weight-400">
                     Top Loss
                   </h4>
-                  <div className="flex justify-between align-center">
-                    <h3 className="text-danger pt-1 weight-400">
-                      $ -10.55
+                  <div className="flex justify-between align-center pt-2 px-1">
+                    <h3 className="weight-400">
+                      {topLoss?.item?.symbol}
                     </h3>
                     <h5 className="text-danger pt-1 weight-400">
-                      -1.55%
+                      $ {addCommaToNumber(topLoss.amount)}
                     </h5>
                   </div>
                 </div>

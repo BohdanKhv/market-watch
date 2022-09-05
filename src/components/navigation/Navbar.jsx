@@ -53,7 +53,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-footer">
           <p>
-            © 2020
+            © 2022
           </p>
         </div>
       </div>

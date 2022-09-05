@@ -19,6 +19,13 @@
 .header-left {
     flex-grow: 1;
 }
+.header-logo-wrapper {
+    display: none;
+}
+.header-logo {
+    width: 40px;
+    height: 40px;
+}
 
 
 @media (max-width: 769px) {
@@ -33,10 +40,30 @@
     .header-left {
         width: 100%;
         order: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
     }
     .header-right {
         width: 100%;
-        text-align: end;
         order: 1;
+        display: none;
+    }
+    .header .input-wrapper {
+        flex-grow: 1;
+    }
+    .header-logo-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .header-logo {
+        display: flex;
+        align-items: center;
+    }
+    .header-logo-wrapper h3 {
+        font-size: 28px;
+        font-weight: 400;
     }
 }

@@ -6,7 +6,7 @@
     align-items: center;
 }
 .box-content {
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: var(--color-main);
     border-radius: var(--border-radius-sm);
     box-shadow: var(--box-shadow);

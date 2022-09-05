@@ -1,0 +1,120 @@
+.modal-overlay {    
+    position: fixed;
+    inset: 0px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-index: 99999;
+    background-color: #70707070;
+    width: 100%;
+    height: 100%;
+    animation-duration: var(--transition-duration);
+    animation-name: opacity;
+    text-align: start;
+}
+
+.modal-overlay .modal-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay .modal-wrapper .modal-body {
+    border-radius: var(--border-radius);
+    background-color: var(--color-main);
+    min-width: 650px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.modal-body .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid var(--color-secondary);
+    text-transform: capitalize;
+}
+
+.modal-body .modal-header h3 {
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.modal-body .modal-header button {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.modal-body .modal-content {
+    padding: 1rem 1rem 0 1rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.modal-body .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem 1rem;
+    border-top: 1px solid var(--color-secondary);
+}
+
+.modal-footer .btn {
+    margin-left: 15px;
+}
+
+.modal-spinner svg {
+    animation: spin 1s linear infinite;
+}
+
+.modal-body .modal-content.modal-scroll {
+    overflow-y: auto;
+    max-height: calc(90vh - 100px);
+    margin: 0;
+}
+
+.modal-error {
+    background-color: var(--color-secondary);
+    border: 1px solid var(--color-danger);
+    color: var(--color-danger);
+    margin: 1rem 1rem 0 1rem;
+    animation-duration: var(--transition-duration);
+    animation-name: opacity;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+@media (max-width: 735px) {
+    .modal-overlay .modal-wrapper .modal-body {
+        text-align: initial;
+        min-width: 90vw;
+        max-width: 90vw;
+        margin: 0 1rem;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

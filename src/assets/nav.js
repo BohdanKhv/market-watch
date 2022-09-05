@@ -2,16 +2,10 @@ import { homeIcon, userIcon, walletIcon, searchIcon, gridIcon, homeFillIcon, sta
 
 const sideNav = [
     {
-        title: 'Market',
+        title: 'Watchlist',
         icon: marketIcon,
         fillIcon: marketFillIcon,
         path: '/',
-    },
-    {
-        title: 'Watchlist',
-        icon: starEmptyIcon,
-        fillIcon: starFillIcon,
-        path: '/watchlist',
     },
     {
         title: 'Portfolio',

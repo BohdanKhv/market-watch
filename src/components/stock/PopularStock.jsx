@@ -3,27 +3,8 @@ import { Menu } from '../';
 import { moreIcon, starEmptyIcon, walletIcon } from '../../assets/icons';
 import './styles/PopularStock.css'
 
-const PopularStock = ({item, className}) => {
+const PopularStock = ({item, className, menuItems}) => {
     const [open, setOpen] = useState(false);
-
-    const menuItems = [
-        {
-            title: 'Add to watchlist',
-            icon: starEmptyIcon,
-            onClick: () => {
-                console.log('Add to watchlist');
-                setOpen(false);
-            }
-        },
-        {
-            title: 'Add to portfolio',
-            icon: walletIcon,
-            onClick: () => {
-                console.log('Add to portfolio');
-                setOpen(false);
-            }
-        }
-    ]
 
     return (
         <div className={`popular-stock-card${className ? ` ${className}` : ''}`}>
@@ -47,8 +28,9 @@ const PopularStock = ({item, className}) => {
                     {item.name}
                 </h5>
             </div>
-            <div className="popular-stock-pnl">
-                5.5% <span className="text-secondary">this week</span>
+            <div className="popular-stock-pnl flex justify-between">
+                <span className={`${item.priceChange > 0 ? "text-success" : item.priceChange < 0 ? 'text-danger' : ''}`}>$ {item.priceChange}</span>
+                {/* <span className="text-secondary">today</span> */}
             </div>
         </div>
     )

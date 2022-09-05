@@ -1,0 +1,74 @@
+[
+    {
+        "symbol": "TSLA",
+        "name": "Tesla Inc.",
+        "logo": "https://s3-symbol-logo.tradingview.com/tesla--600.png",
+        "price": "1436.0",
+        "priceChange": "36.00",
+        "quantity": "100",
+        "perchesPrice": "47.0"
+    },
+    {
+        "symbol": "NFLX",
+        "name": "Netflix Inc.",
+        "logo": "https://s3-symbol-logo.tradingview.com/netflix--600.png",
+        "price": "100.0",
+        "priceChange": "0.00",
+        "quantity": "10",
+        "perchesPrice": "47.0"
+    },
+    {
+        "symbol": "NVDA",
+        "name": "NVIDIA Corp.",
+        "logo": "https://s3-symbol-logo.tradingview.com/nvidia--600.png",
+        "price": "100.0",
+        "priceChange": "0.00",
+        "quantity": "10",
+        "perchesPrice": "47.0"
+    },
+    {
+        "symbol": "PYPL",
+        "name": "PayPal Holdings Inc.",
+        "logo": "https://s3-symbol-logo.tradingview.com/paypal--600.png",
+        "price": "100.0",
+        "priceChange": "0.00",
+        "quantity": "10",
+        "perchesPrice": "47.0"
+    },
+    {
+        "symbol": "ADBE",
+        "name": "Adobe Inc.",
+        "logo": "https://s3-symbol-logo.tradingview.com/adobe--600.png",
+        "price": "100.0",
+        "priceChange": "0.00",
+        "quantity": "10",
+        "perchesPrice": "47.0"
+    },
+    {
+        "symbol": "CRM",
+        "name": "Salesforce.com Inc.",
+        "logo": "https://s3-symbol-logo.tradingview.com/salesforce--600.png",
+        "price": "12.0",
+        "priceChange": "0.00",
+        "quantity": "10",
+        "perchesPrice": "47.0"
+    },
+    {
+        "symbol": "INTC",
+        "name": "Intel Corp.",
+        "logo": "https://s3-symbol-logo.tradingview.com/intel--600.png",
+        "price": "100.0",
+        "priceChange": "0.00",
+        "quantity": "10",
+        "perchesPrice": "47.0"
+    },
+    {
+        "symbol": "AMD",
+        "name": "Advanced Micro Devices Inc.",
+        "logo": "https://s3-symbol-logo.tradingview.com/advanced-micro-devices--600.png",
+        "price": "53.0",
+        "priceChange": "0.00",
+        "quantity": "1000",
+        "perchesPrice": "47.0"
+    }
+]

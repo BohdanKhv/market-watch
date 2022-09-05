@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import './styles/Input.css'
 
-const Input = ({value, onChange, icon, type, placeholder, }) => {
+const Input = ({value, onChange, icon, type, placeholder }) => {
     const inputRef = useRef(null);
 
     return (

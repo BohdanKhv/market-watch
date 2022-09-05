@@ -121,7 +121,7 @@
     {
         "symbol": "TXN",
         "name": "Texas Instruments Inc.",
-        "logo": "https://s3-symbol-logo.tradingview.com/apple--600.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/texas-instruments--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
@@ -137,7 +137,7 @@
     {
         "symbol": "COST",
         "name": "Costco Wholesale Corp.",
-        "logo": "https://s3-symbol-logo.tradingview.com/apple--600.png",
+        "logo": "https://s3-symbol-logo.tradingview.com/costco-wholesale--600.png",
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10"
