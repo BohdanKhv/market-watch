@@ -1,26 +1,19 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Navbar, Header } from "./components";
 import { Watchlist, Portfolio, Settings } from "./pages";
 
 function App() {
-  // const theme = useSelector((state) => state.local.theme);
+  const theme = useSelector((state) => state.local.theme);
 
-//   useEffect(() => {
-//     if (theme === 'dark') {
-//         document.body.setAttribute('data-theme', 'dark');
-//     } else {
-//         document.body.setAttribute('data-theme', 'light');
-//     }
-// }, [theme]);
-
-useEffect(() => {
-    // if (theme === 'dark') {
-    //     document.body.setAttribute('data-theme', 'dark');
-    // } else {
+  useEffect(() => {
+    if (theme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+    } else {
         document.body.setAttribute('data-theme', 'light');
-    // }
-}, []);
+    }
+}, [theme]);
 
   return (
     <Router>

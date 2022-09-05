@@ -29,7 +29,16 @@ const Watchlist = () => {
           <Box title="Watchlist" menuItems={watchlistMenuItems} size="lg">
             <div className="flex flex-col">
               {testStock.map((item, index) => (
-                <StockListItem key={index} item={item} menuItems={listMenuItems} index={index} className={index+1 !== testStock.length ? 'border-bottom' : ""}/>
+                <StockListItem
+                  key={index}
+                  item={item}
+                  menuItems={listMenuItems}
+                  index={index}
+                  className={
+                    index === 0 ? 'border-t-r border-bottom' :
+                    index+1 === testStock.length ? 'border-b-r' : 'border-bottom'
+                  }
+                />
               ))}
             </div>
           </Box>
@@ -39,13 +48,13 @@ const Watchlist = () => {
             <div className="flex flex-col flex-sm-row">
               <div className="flex-grow-1">
                 <h4 className="weight-500 p-3">
-                  Best stock of the day
+                  Best of the day
                 </h4>
                 <PopularStock item={testStock.sort((a, b) => +b.priceChange - a.priceChange)[0]} menuItems={listMenuItems} />
               </div>
               <div className="flex-grow-1">
                 <h4 className="weight-500 p-3">
-                  Worst stock of the day
+                  Worst of the day
                 </h4>
                 <PopularStock item={testStock.sort((a, b) => +a.priceChange - b.priceChange)[0]} menuItems={listMenuItems} />
               </div>

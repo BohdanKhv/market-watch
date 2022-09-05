@@ -27,20 +27,20 @@ const Menu = ({ items, open, setOpen, index }) => {
 
     return (
         <div className={`menu${open ? ' menu-open' : ' menu-hidden'}`}>
-                {items.map((item, index) => (
-                    <div className="menu-item"
-                        key={`menu-item-${index}`}
-                        onClick={() => {
-                            item.onClick();
-                            setOpen(false);
-                        }}
-                    >
-                        {item.icon &&
-                            <span className="menu-item-icon">{item.icon}</span>
-                        }
-                        {item.title}
-                        </div>
-                ))}
+            {items.map((item, index) => (
+                <div className="menu-item"
+                    key={`menu-item-${index}`}
+                    onClick={() => {
+                        item.onClick();
+                        setOpen(false);
+                    }}
+                >
+                    {item.icon &&
+                        <span className="menu-item-icon">{item.icon}</span>
+                    }
+                    {item.title}
+                    </div>
+            ))}
         </div>
     )
 }

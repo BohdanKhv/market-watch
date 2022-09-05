@@ -4,7 +4,7 @@ import { addCommaToNumber } from '../../assets/utils';
 import { moreIcon, starEmptyIcon, trashIcon, walletIcon } from '../../assets/icons';
 import './styles/StockPortfolio.css'
 
-const PopularStock = ({item, className}) => {
+const PopularStock = ({item, className, index}) => {
     const [open, setOpen] = useState(false);
 
     const menuItems = [
@@ -37,50 +37,51 @@ const PopularStock = ({item, className}) => {
     return (
         <div className="pos-relative">
         {open &&
-            <Menu open={open} setOpen={setOpen} items={menuItems}/>
+            <Menu open={open} setOpen={setOpen} items={menuItems} index={index+1}/>
         }
-        <div className={`stock-portfolio-card menu-btn${className ? ` ${className}` : ''}`}
-            onClick={() => setOpen(!open)}
-        >
-            <div className="stock-portfolio-info gap-3">
-                <div className="stock-portfolio-logo">
-                    <img src={item.logo} alt="logo" />
-                </div>
-                <div className="stock-portfolio-name flex-grow-1">
-                    <h3>{item.symbol}</h3>
-                    <h5>
-                        {item.name}
-                    </h5>
-                    <div className="fs-12">
-                        <span className="weight-500">{item.quantity}</span> <span className="text-secondary">Shares</span>
+            <div
+                className={`stock-portfolio-card menu-btn${className ? ` ${className}` : ''}${open ? ' bg-secondary' : ''}`}
+                data-menu-index={index+1}
+                onClick={() => setOpen(!open)}>
+                <div className="stock-portfolio-info gap-3">
+                    <div className="stock-portfolio-logo">
+                        <img src={item.logo} alt="logo" />
                     </div>
-                </div>
-                <div className="flex gap-3">
-                    <div className="stock-portfolio-price">
-                        <div className="fs-12 text-secondary">
-                            Bought at
-                        </div>
-                        <div className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
-                            {item.perchesPrice}
-                        </div>
+                    <div className="stock-portfolio-name flex-grow-1">
+                        <h3>{item.symbol}</h3>
+                        <h5>
+                            {item.name}
+                        </h5>
                         <div className="fs-12">
-                            $ {addCommaToNumber(item.perchesPrice * item.quantity)}
+                            <span className="weight-500">{item.quantity}</span> <span className="text-secondary">Shares</span>
                         </div>
                     </div>
-                    <div className="stock-portfolio-price">
-                        <div className="fs-12 text-secondary">
-                            Current
+                    <div className="flex gap-3">
+                        <div className="stock-portfolio-price">
+                            <div className="fs-12 text-secondary">
+                                Bought at
+                            </div>
+                            <div className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
+                                {item.perchesPrice}
+                            </div>
+                            <div className="fs-12">
+                                $ {addCommaToNumber(item.perchesPrice * item.quantity)}
+                            </div>
                         </div>
-                        <div className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
-                            {item.price}
-                        </div>
-                        <div className="fs-12">
-                            $ {addCommaToNumber(+item.price * +item.quantity)}
+                        <div className="stock-portfolio-price">
+                            <div className="fs-12 text-secondary">
+                                Current
+                            </div>
+                            <div className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
+                                {item.price}
+                            </div>
+                            <div className="fs-12">
+                                $ {addCommaToNumber(+item.price * +item.quantity)}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     )
 }

@@ -21,7 +21,7 @@ const Header = () => {
                 </div>
                 <div className="header-right">
                     <div className="date">
-                        {new Date().toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
+                        {new Date().toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
                     </div>
                 </div>
             </div>

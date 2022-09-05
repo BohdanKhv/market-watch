@@ -36,15 +36,23 @@ const Portfolio = () => {
         <div className="flex-grow-2 order-sm-2">
           <Box title="Portfolio" menuItems={listMenuItems} size="lg">
             <div className="flex flex-col justify-between flex-wrap">
-              {testPortfolio.slice(4,8).map((item, index) => (
-                <StockPortfolio key={index} item={item} />
+              {testPortfolio.map((item, index) => (
+                <StockPortfolio
+                  key={index}
+                  item={item}
+                  index={index}
+                  className={
+                    index === 0 ? 'border-t-r border-bottom' :
+                    index+1 === testPortfolio.length ? 'border-b-r' : 'border-bottom'
+                  }
+                />
               ))}
             </div>
           </Box>
         </div>
         <div className="flex flex-col flex-grow-1 gap-5 flex-sm-row order-sm-1">
           <div className="flex-grow-1">
-            <Box title="Net Value" size="lg">
+            <Box title="Total" size="lg">
               <div className="p-3 flex flex-col gap-4">
               <div>
                 <h4 className="text-secondary weight-400">
