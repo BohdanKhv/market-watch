@@ -26,6 +26,7 @@
   --color-main-25: rgb(32, 32, 32, 0.9);
   --color-main-50: rgb(32, 32, 32, 0.35);
   --color-secondary: #363636;
+  --color-secondary-light: #2e2e2e;
   --color-tertiary: #181818;
   --color-primary: #03c4f0;
   --color-border: #474748;
@@ -41,6 +42,7 @@
   --color-main-25: rgb(255, 255, 255, 0.9);
   --color-main-50: rgb(255, 255, 255, 0.35);
   --color-secondary: #f6f7f8;
+  --color-secondary-light: #f6f7f8;
   --color-tertiary: #f0f0f0;
   --color-primary: #03c4f0;
   --color-border: #2E2E3B;
@@ -91,6 +93,7 @@ body {
   padding-right: 16px;
   max-width: 1100px;
   margin: 0 auto;
+  background-color: var(--color-tertiary);
 }
 .content-body {
   padding: 0px 0;

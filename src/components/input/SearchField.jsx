@@ -45,13 +45,13 @@ const SearchField = ({setSearchFocused}) => {
         }
     }, [pathname]);
 
-    useEffect(() => {
-        if(isOpen) {
-            document.querySelector('.content')?.classList.add('brightness-25');
-        } else {
-            document.querySelector('.content')?.classList.remove('brightness-25');
-        }
-    }, [isOpen]);
+    // useEffect(() => {
+    //     if(isOpen) {
+    //         document.querySelector('.content')?.classList.add('brightness-25');
+    //     } else {
+    //         document.querySelector('.content')?.classList.remove('brightness-25');
+    //     }
+    // }, [isOpen]);
 
     return (
         <div className="search">

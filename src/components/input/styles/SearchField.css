@@ -1,14 +1,14 @@
 .search {
-    /* max-width: 600px; */
+    max-width: 635px;
     width: 100%;
     position: relative;
 }
 
 .search-results {
     position: absolute;
-    background-color: var(--color-main);
-    height: 400px;
-    box-shadow: var(--box-shadow);
+    background-color: var(--color-secondary-light);
+    height: 600px;
+    box-shadow: 0 15px 20px rgb(0 0 0 / 50%);
     width: 100%;
     margin-top: 10px;
     border-radius: var(--border-radius);
@@ -16,9 +16,9 @@
 }
 
 .search-list {
-    height: 330px;
+    height: 535px;
     overflow-y: scroll;
-    background-color: var(--color-main);
+    background-color: var(--color-secondary-light);
 }
 
 .search-list::-webkit-scrollbar {
