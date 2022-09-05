@@ -16,7 +16,9 @@ const Box = ({children, title, menuItems, size}) => {
                             onClick={(e) => setOpen(!open)}>
                             {moreIcon}
                         </div>
-                        <Menu open={open} setOpen={setOpen} items={menuItems}/>
+                        {open &&
+                            <Menu open={open} setOpen={setOpen} items={menuItems}/>
+                        }
                     </div>
                 }
             </div>

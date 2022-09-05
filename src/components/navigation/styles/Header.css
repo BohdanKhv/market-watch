@@ -1,7 +1,7 @@
 .header-wrapper {
     margin-left: 100px;
     overflow: hidden;
-    padding-bottom: 50px;
+    padding-bottom: 25px;
 }
 .header {
     background-color: var(--color-main);

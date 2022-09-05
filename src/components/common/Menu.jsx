@@ -8,7 +8,6 @@ const Menu = ({ items, open, setOpen }) => {
             if (e.target.classList.contains('menu') || e.target.classList.contains('menu-item') || e.target.classList.contains('menu-btn')) {
                 return
             } else {
-                console.log(e.target)
                 setOpen(false);
             }
         }
@@ -26,7 +25,10 @@ const Menu = ({ items, open, setOpen }) => {
     return (
         <div className={`menu${open ? ' menu-open' : ' menu-hidden'}`}>
                 {items.map((item, index) => (
-                    <div className="menu-item" key={`menu-item-${index}`}>
+                    <div className="menu-item"
+                        key={`menu-item-${index}`}
+                        onClick={item.onClick}
+                    >
                         {item.icon &&
                             <span className="menu-item-icon">{item.icon}</span>
                         }

@@ -1,15 +1,17 @@
 .input-wrapper {
     display: flex;
-    border: 1px solid var(--color-tertiary);
-    border-radius: var(--border-radius-sm);
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--border-radius);
     padding: 8px 16px;
     fill: var(--text-dark);
     cursor: text;
     transition-duration: var(--transition-duration);
+    background-color: var(--color-secondary);
 }
 .input-wrapper:focus-within,
 .input-wrapper:hover {
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--color-primary);
+    fill: var(--color-primary);
 }
 
 .input-wrapper input {
@@ -17,6 +19,13 @@
     font-size: 16px;
     border: none;
     outline: none;
+    background-color: transparent;
+    color: var(--text-dark);
+}
+
+.input-wrapper input::placeholder {
+    color: var(--text-dark);
+    opacity: 0.5;
 }
 
 .input-icon {
