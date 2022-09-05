@@ -135,6 +135,7 @@
         height: auto;
         width: 100vw;
         width: -webkit-fill-available;
+        background: linear-gradient(0deg, var(--color-main) 35%, var(--color-main-25) 90%, var(--color-main-50) 100%);
     }
     .navbar-top-links {
         flex-direction: row;

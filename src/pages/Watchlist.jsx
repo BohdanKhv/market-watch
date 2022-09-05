@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { shareIcon, trashIcon } from '../assets/icons'
 import testStock from '../assets/testStock.json'
 import { Box, StockListItem, PopularStock } from '../components'
@@ -21,6 +22,11 @@ const Watchlist = () => {
       }
     },
   ]
+
+  useEffect(() => {
+    document.title = 'STOKIN - Watchlist';
+    window.scrollTo(0, 0);
+  }, [])
 
   return (
     <div className="content-body">

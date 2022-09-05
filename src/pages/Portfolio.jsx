@@ -23,6 +23,8 @@ const Portfolio = () => {
   const [percentPnl, setPercentPnl] = useState(0);
 
   useEffect(() => {
+    document.title = 'STOKIN - Portfolio';
+    window.scrollTo(0, 0);
     setTotalPortfolioValue(getTotalPortfolioValue(testPortfolio));
     setTopLoss(getTopLoss(testPortfolio));
     setTopGain(getTopGain(testPortfolio));
@@ -50,8 +52,8 @@ const Portfolio = () => {
             </div>
           </Box>
         </div>
-        <div className="flex flex-col flex-grow-1 gap-5 flex-sm-row order-sm-1">
-          <div className="flex-grow-1">
+        <div className="flex flex-col flex-grow-1 gap-5 flex-sm-row order-sm-1 flex-sm-wrap">
+          <div className="flex-grow-sm-1">
             <Box title="Total" size="lg">
               <div className="p-3 flex flex-col gap-4">
               <div>
@@ -83,7 +85,7 @@ const Portfolio = () => {
               </div>
             </Box>
           </div>
-          <div className="flex-grow-1">
+          <div className="flex-grow-sm-1">
             <Box title="Summary" size="lg">
               <div className="p-3 flex flex-col gap-4">
                   <div>
@@ -92,7 +94,7 @@ const Portfolio = () => {
                     </h4>
                     <div className={`flex justify-between align-center pt-2 px-1 ${pnl > 0 ? 'text-success' : pnl < 0 ? 'text-danger' : 'text-secondary' }`}>
                       <h3 className="weight-400">
-                        $ {addCommaToNumber(pnl)}
+                        {pnl > 0 ? '+ ' : pnl < 0 ? '- ' : ''}$ {addCommaToNumber(pnl)}
                       </h3>
                       <h5 className="fs-12 weight-400">
                         {percentPnl > 0 ? '+' : percentPnl < 0 ? '-' : ''} {percentPnl}%
@@ -108,7 +110,7 @@ const Portfolio = () => {
                         {topGain?.item?.symbol}
                       </h3>
                       <h5 className="text-success pt-1 weight-400">
-                        $ {addCommaToNumber(topGain.amount)}
+                        {topGain.amount > 0 ? '+ ' : topGain.amount < 0 ? '- ' : ''}$ {addCommaToNumber(topGain.amount)}
                       </h5>
                     </div>
                   </div>
@@ -121,7 +123,7 @@ const Portfolio = () => {
                         {topLoss?.item?.symbol}
                       </h3>
                       <h5 className="text-danger pt-1 weight-400">
-                        $ {addCommaToNumber(topLoss.amount)}
+                        {topLoss.amount > 0 ? '+ ' : topLoss.amount < 0 ? '- ' : ''}$ {addCommaToNumber(topLoss.amount)?.replace('-', '')}
                       </h5>
                     </div>
                   </div>

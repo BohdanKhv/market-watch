@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { infoIcon, moonIcon, rightArrowIcon, sunIcon } from '../assets/icons'
 import { Box } from '../components'
@@ -6,6 +7,11 @@ import { setTheme } from '../features/local/localSlice'
 const Settings = () => {
     const theme = useSelector(state => state.local.theme);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        document.title = 'STOKIN - Settings';
+        window.scrollTo(0, 0);
+    }, [])
 
     return (
         <Box title="Settings">

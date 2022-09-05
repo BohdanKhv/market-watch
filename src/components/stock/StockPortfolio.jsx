@@ -56,28 +56,28 @@ const PopularStock = ({item, className, index}) => {
                             <span className="weight-500">{item.quantity}</span> <span className="text-secondary">Shares</span>
                         </div>
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 flex-grow-1 justify-end">
                         <div className="stock-portfolio-price">
-                            <div className="fs-12 text-secondary">
+                            <span className="fs-12 text-secondary white-space-nowrap weight-400">
                                 Bought at
-                            </div>
-                            <div className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
+                            </span>
+                            <span className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
                                 {item.perchesPrice}
-                            </div>
-                            <div className="fs-12">
+                            </span>
+                            <span className="fs-12">
                                 $ {addCommaToNumber(item.perchesPrice * item.quantity)}
-                            </div>
+                            </span>
                         </div>
                         <div className="stock-portfolio-price">
-                            <div className="fs-12 text-secondary">
+                            <span className="fs-12 text-secondary white-space-nowrap weight-400">
                                 Current
-                            </div>
-                            <div className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
+                            </span>
+                            <span className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
                                 {item.price}
-                            </div>
-                            <div className="fs-12">
+                            </span>
+                            <span className="fs-12 white-space-nowrap">
                                 $ {addCommaToNumber(+item.price * +item.quantity)}
-                            </div>
+                            </span>
                         </div>
                     </div>
                 </div>

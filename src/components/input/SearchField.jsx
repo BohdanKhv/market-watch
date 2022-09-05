@@ -45,11 +45,19 @@ const SearchField = ({setSearchFocused}) => {
         }
     }, [pathname]);
 
+    useEffect(() => {
+        if(isOpen) {
+            document.querySelector('.content')?.classList.add('brightness-25');
+        } else {
+            document.querySelector('.content')?.classList.remove('brightness-25');
+        }
+    }, [isOpen]);
+
     return (
         <div className="search">
             <Input
                 type="text"
-                placeholder="Search for stocks by name or symbol"
+                placeholder="Search by name or symbol"
                 value={searchQuery}
                 icon={searchIcon}
                 onChange={(e) => {
