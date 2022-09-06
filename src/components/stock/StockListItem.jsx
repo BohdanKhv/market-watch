@@ -1,23 +1,17 @@
 import { useState } from 'react'
-import { Menu } from '../';
-import { walletIcon } from '../../assets/icons';
-import { AddToPortfolio } from '../'
+import { useDispatch, useSelector } from 'react-redux';
+import { Menu, UpdatePortfolio, AddToPortfolio, Avatar } from '../';
+import { removeFromFavorite, addToFavorite } from '../../features/local/localSlice';
+import { starEmptyIcon, starFillIcon, walletFillIcon, walletIcon } from '../../assets/icons';
 import './styles/StockListItem.css'
 
-const StockListItem = ({item, menuItems, index, className, setAlert}) => {
-    const [addToPortfolioOpen, setAddToPortfolioOpen] = useState(false)
+const StockListItem = ({item, index, className, setAlert}) => {
+    const [openAddToPortfolio, setOpenAddToPortfolio] = useState(false);
+    const [openUpdateToPortfolio, setOpenUpdateToPortfolio] = useState(false);
     const [open, setOpen] = useState(false);
-
-    const newMenuItems = [
-        {
-            title: "Add to Portfolio",
-            icon: walletIcon,
-            onClick: (item) => {
-                setAddToPortfolioOpen(true);
-            }
-            },
-        ...menuItems
-    ]
+    const exist = useSelector(state => state.local.portfolio).filter(i => i.symbol === item.symbol)[0];
+    const favorite = useSelector(state => state.local.favorite).filter(i => i.symbol === item.symbol)[0];
+    const dispatch = useDispatch();
 
     return (
         <div
@@ -25,22 +19,77 @@ const StockListItem = ({item, menuItems, index, className, setAlert}) => {
             onClick={() => setOpen(!open)}
             data-menu-index={index+1}
         >
-        <AddToPortfolio
-            modalIsOpen={addToPortfolioOpen}
-            setModalIsOpen={setAddToPortfolioOpen}
-            item={item} 
-            setAlert={setAlert}
-        />
-        {open &&
-            <Menu
-                open={open}
-                setOpen={setOpen}
-                items={newMenuItems}
-                index={index+1}
+            {exist && 
+                <UpdatePortfolio
+                    item={exist} 
+                    setAlert={setAlert}
+                    open={openUpdateToPortfolio}
+                    setOpen={setOpenUpdateToPortfolio}
+                />
+            }
+            <AddToPortfolio
+                item={item} 
+                setAlert={setAlert}
+                open={openAddToPortfolio}
+                setOpen={setOpenAddToPortfolio}
             />
-        }
+            {open &&
+                <Menu
+                    open={open}
+                    setOpen={setOpen}
+                    index={index+1}
+                >
+                    {exist ? (
+                        <div className="menu-item"
+                            onClick={() => {
+                                setOpenUpdateToPortfolio(true);
+                            }}
+                        >
+                            <span className="menu-item-icon">{walletFillIcon}</span>
+                            Update Portfolio
+                        </div>
+                    ) : (
+                        <div className="menu-item"
+                            onClick={() => {
+                                setOpenAddToPortfolio(true);
+                            }}
+                        >
+                            <span className="menu-item-icon">{walletIcon}</span>
+                            Add to Portfolio
+                        </div>
+                    )}
+                    {favorite ? (
+                        <div className="menu-item"
+                            onClick={() => {
+                                dispatch(removeFromFavorite(favorite));
+                                setAlert(`Removed ${item.symbol} from favorite`);
+                            }}
+                        >
+                            <span className="menu-item-icon">{starFillIcon}</span>
+                            Unfavorite
+                        </div>
+                    ) : (
+                        <div className="menu-item"
+                            onClick={() => {
+                                dispatch(addToFavorite(item));
+                                setAlert(`Added ${item.symbol} to favorite`);
+                            }}
+                        >
+                            <span className="menu-item-icon">{starEmptyIcon}</span>
+                            Favorite
+                        </div>
+                    )}
+                </Menu>
+            }
+            {exist && (
+                <div className="list-item-exist"/>
+            )}
             <div className="list-item-logo">
-                <img src={item.logo} alt={item.name} />
+                <Avatar
+                    image={item.logo}
+                    name={item.symbol}
+                    size="full"
+                />
             </div>
             <div className="list-item-name">
                 <div className="list-item-symbol">{item.symbol}</div>

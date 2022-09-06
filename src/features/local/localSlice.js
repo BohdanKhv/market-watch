@@ -17,27 +17,41 @@ export const localSlice = createSlice({
         resetLocal: (state) => {
             state.theme = "light";
         },
+        resetData: (state) => {
+            state.favorite = [];
+            state.portfolio = [];
+        },
         setTheme: (state, action) => {
             state.theme = action.payload;
             localStorage.setItem("theme", action.payload);
         },
         addToFavorite: (state, action) => {
-            state.favorite.push(action.payload);
-            localStorage.setItem("favorite", JSON.stringify(state.favorite));
+            const index = state.favorite.findIndex(
+                (item) => item.symbol === action.payload.symbol
+            );
+            if(index === -1) {
+                state.favorite.push(action.payload);
+                localStorage.setItem("favorite", JSON.stringify(state.favorite));
+            }
         },
         removeFromFavorite: (state, action) => {
             state.favorite = state.favorite.filter(
-                (item) => item !== action.payload
+                (item) => item.symbol !== action.payload.symbol
             );
             localStorage.setItem("favorite", JSON.stringify(state.favorite));
         },
         addToPortfolio: (state, action) => {
-            state.portfolio.push(action.payload);
-            localStorage.setItem("portfolio", JSON.stringify(state.portfolio));
+            const index = state.portfolio.findIndex(
+                (item) => item.symbol === action.payload.symbol
+            );
+            if(index === -1) {
+                state.portfolio.push(action.payload);
+                localStorage.setItem("portfolio", JSON.stringify(state.portfolio));
+            }
         },
         removeFromPortfolio: (state, action) => {
             state.portfolio = state.portfolio.filter(
-                (item) => item !== action.payload
+                (item) => item.symbol !== action.payload.symbol
             );
             localStorage.setItem("portfolio", JSON.stringify(state.portfolio));
         },
@@ -55,6 +69,7 @@ export const localSlice = createSlice({
 
 export const {
     resetLocal, 
+    resetData,
     setTheme,
     addToFavorite,
     removeFromFavorite,

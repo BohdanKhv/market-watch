@@ -93,11 +93,12 @@
 
 .navbar-item:hover {
     opacity: 1;
-    background-color: var(--color-secondary);
+    /* background-color: var(--color-secondary); */
 }
 .navbar .navbar-item.active {
     opacity: 1;
-    background-color: var(--color-secondary);
+    background-color: transparent;
+    /* background-color: var(--color-secondary); */
 }
 
 .navbar .navbar-item svg {

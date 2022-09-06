@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import "./styles/Menu.css"
 
-const Menu = ({ items, open, setOpen, index }) => {
+const Menu = ({ children, open, setOpen, index, items }) => {
 
     const openMenuOnClick = (e) => {
         if(open) {
@@ -26,21 +26,20 @@ const Menu = ({ items, open, setOpen, index }) => {
     }, [open]);
 
     return (
-        <div className={`menu${open ? ' menu-open' : ' menu-hidden'}`}>
-            {items.map((item, index) => (
-                <div className="menu-item"
-                    key={`menu-item-${index}`}
-                    onClick={() => {
-                        item.onClick();
-                        setOpen(false);
-                    }}
-                >
-                    {item.icon &&
-                        <span className="menu-item-icon">{item.icon}</span>
-                    }
-                    {item.title}
-                    </div>
-            ))}
+        <div className={`menu${open ? ' menu-open' : ' menu-hidden'}`}
+            onClick={() => setOpen(false)}
+        >
+            {items ? items.map((item, i) => (
+                        <div className="menu-item"
+                            onClick={() => {
+                                item.onClick();
+                            }}
+                        >
+                            <span className="menu-item-icon">{item.icon}</span>
+                            {item.title}
+                        </div>
+                )) : children
+            }
         </div>
     )
 }

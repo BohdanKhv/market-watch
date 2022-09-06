@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
-import testPortfolio from '../../assets/testPortfolio.json'
+import { useSelector } from 'react-redux'
 import { getPercentHoldings } from '../../assets/utils'
 import { Box } from '../'
 
 const Holdings = () => {
     const [percentHoldings, setPercentHoldings] = useState([]);
+    const { portfolio } = useSelector(state => state.local)
 
     useEffect(() => {
-        setPercentHoldings(getPercentHoldings(testPortfolio));
+        setPercentHoldings(getPercentHoldings(portfolio));
     }, [])
 
     return (
@@ -19,7 +20,7 @@ const Holdings = () => {
                     </h4>
                     <div className="flex justify-between align-center">
                         <h4 className="text-secondary weight-400">
-                        % of Holdings
+                            %
                         </h4>
                     </div>
                 </div>

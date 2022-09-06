@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
-import testPortfolio from '../../assets/testPortfolio.json'
+import { useSelector } from 'react-redux'
 import { getTotalPortfolioValue, addCommaToNumber } from '../../assets/utils'
 import { Box } from '../'
 
 const Total = () => {
     const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
+    const { portfolio } = useSelector(state => state.local)
 
     useEffect(() => {
-        setTotalPortfolioValue(getTotalPortfolioValue(testPortfolio));
+        setTotalPortfolioValue(getTotalPortfolioValue(portfolio));
     }, [])
 
     return (
@@ -26,7 +27,7 @@ const Total = () => {
                     </h4>
                     <div className="flex justify-between align-center pt-2 px-1">
                         <h3 className="weight-400">
-                        {addCommaToNumber(testPortfolio.length)}
+                        {addCommaToNumber(portfolio.length)}
                         </h3>
                     </div>
                     </div>
@@ -36,7 +37,7 @@ const Total = () => {
                     </h4>
                     <div className="flex justify-between align-center pt-2 px-1">
                         <h3 className="weight-400">
-                        {addCommaToNumber(testPortfolio.reduce((acc, item) => acc + +item.quantity, 0))}
+                        {addCommaToNumber(portfolio.reduce((acc, item) => acc + +item.quantity, 0))}
                         </h3>
                     </div>
                     </div>

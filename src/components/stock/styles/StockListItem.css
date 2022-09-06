@@ -19,6 +19,7 @@
 }
 
 .list-item-logo {
+    overflow: hidden;
     width: 35px;
     height: 35px;
 }
@@ -63,4 +64,14 @@
 .list-item-last-change-positive {
     color: var(--color-success);
     opacity: 1;
+}
+
+.list-item-exist {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    width: 5px;
+    background-color: var(--color-primary);
+    height: 50px;
+    border-radius: 5px;
 }

@@ -1,43 +1,66 @@
 import { useState } from 'react'
-import { Menu } from '../';
+import { useDispatch, useSelector } from 'react-redux';
+import { Menu, UpdatePortfolio, Avatar } from '../';
 import { addCommaToNumber } from '../../assets/utils';
-import { moreIcon, starEmptyIcon, trashIcon, walletIcon } from '../../assets/icons';
+import { starEmptyIcon, starFillIcon, trashIcon, walletFillIcon } from '../../assets/icons';
+import { removeFromPortfolio, removeFromFavorite, addToFavorite } from '../../features/local/localSlice';
 import './styles/StockPortfolio.css'
 
-const PopularStock = ({item, className, index}) => {
+const PopularStock = ({item, className, index, setAlert}) => {
     const [open, setOpen] = useState(false);
-
-    const menuItems = [
-        {
-            title: 'Favorite',
-            icon: starEmptyIcon,
-            onClick: () => {
-                console.log('Add to watchlist');
-                setOpen(false);
-            }
-        },
-        {
-            title: 'Edit',
-            icon: walletIcon,
-            onClick: () => {
-                console.log('Add to portfolio');
-                setOpen(false);
-            }
-        },
-        {
-            title: 'Delete',
-            icon: trashIcon,
-            onClick: () => {
-                console.log('Add to portfolio');
-                setOpen(false);
-            }
-        },
-    ]
+    const [openUpdateToPortfolio, setOpenUpdateToPortfolio] = useState(false);
+    const favorite = useSelector(state => state.local.favorite).filter(i => i.symbol === item.symbol)[0];
+    const dispatch = useDispatch();
 
     return (
         <div className="pos-relative">
+        <UpdatePortfolio
+            item={item} 
+            setAlert={setAlert}
+            open={openUpdateToPortfolio}
+            setOpen={setOpenUpdateToPortfolio}
+        />
         {open &&
-            <Menu open={open} setOpen={setOpen} items={menuItems} index={index+1}/>
+            <Menu open={open} setOpen={setOpen} index={index+1}>
+                <div className="menu-item"
+                    onClick={() => {
+                        setOpenUpdateToPortfolio(true);
+                    }}
+                >
+                    <span className="menu-item-icon">{walletFillIcon}</span>
+                    Update
+                </div>
+                {favorite ? (
+                    <div className="menu-item"
+                        onClick={() => {
+                            dispatch(removeFromFavorite(favorite));
+                            setAlert(`Removed ${item.symbol} from favorite`);
+                        }}
+                    >
+                        <span className="menu-item-icon">{starFillIcon}</span>
+                        Unfavorite
+                    </div>
+                ) : (
+                    <div className="menu-item"
+                        onClick={() => {
+                            dispatch(addToFavorite(item));
+                            setAlert(`Added ${item.symbol} to favorite`);
+                        }}
+                    >
+                        <span className="menu-item-icon">{starEmptyIcon}</span>
+                        Favorite
+                    </div>
+                )}
+                <div className="menu-item"
+                    onClick={() => {
+                        dispatch(removeFromPortfolio(item));
+                        setAlert(`Removed ${item.symbol} from portfolio`);
+                    }}
+                >
+                    <span className="menu-item-icon">{trashIcon}</span>
+                    Remove
+                </div>
+            </Menu>
         }
             <div
                 className={`stock-portfolio-card menu-btn${className ? ` ${className}` : ''}${open ? ' bg-secondary' : ''}`}
@@ -45,7 +68,11 @@ const PopularStock = ({item, className, index}) => {
                 onClick={() => setOpen(!open)}>
                 <div className="stock-portfolio-info gap-3">
                     <div className="stock-portfolio-logo">
-                        <img src={item.logo} alt="logo" />
+                        <Avatar
+                            image={item.logo}
+                            name={item.symbol}
+                            size="full"
+                        />
                     </div>
                     <div className="stock-portfolio-name flex-grow-1">
                         <h3>{item.symbol}</h3>
@@ -59,20 +86,20 @@ const PopularStock = ({item, className, index}) => {
                     <div className="flex gap-3 flex-grow-1 justify-end">
                         <div className="stock-portfolio-price">
                             <span className="fs-12 text-secondary white-space-nowrap weight-400">
-                                Bought at
+                                Avg Price
                             </span>
-                            <span className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
-                                {item.perchesPrice}
+                            <span className={`${+item.price > +item.averagePrice ? 'text-success' : +item.price < +item.averagePrice ? 'text-danger' : 'text-secondary'}`}>
+                                {item.averagePrice}
                             </span>
                             <span className="fs-12">
-                                $ {addCommaToNumber(item.perchesPrice * item.quantity)}
+                                $ {addCommaToNumber(item.averagePrice * item.quantity)}
                             </span>
                         </div>
                         <div className="stock-portfolio-price">
                             <span className="fs-12 text-secondary white-space-nowrap weight-400">
                                 Current
                             </span>
-                            <span className={`${+item.price > +item.perchesPrice ? 'text-success' : +item.price < +item.perchesPrice ? 'text-danger' : 'text-secondary'}`}>
+                            <span className={`${+item.price > +item.averagePrice ? 'text-success' : +item.price < +item.averagePrice ? 'text-danger' : 'text-secondary'}`}>
                                 {item.price}
                             </span>
                             <span className="fs-12 white-space-nowrap">

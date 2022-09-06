@@ -1,36 +1,28 @@
-import { useState } from 'react'
-import { Menu } from '../';
-import { moreIcon, starEmptyIcon, walletIcon } from '../../assets/icons';
+import { Avatar } from '../'
 import './styles/PopularStock.css'
 
 const PopularStock = ({item, className, menuItems}) => {
-    const [open, setOpen] = useState(false);
 
     return (
         <div className={`popular-stock-card${className ? ` ${className}` : ''}`}>
-            <div className="popular-stock-header">
+            <div className="popular-stock-header align-center gap-3 flex-wrap">
                 <div className="popular-stock-logo">
-                    <img src={item.logo} alt="logo" />
+                    <Avatar image={item.logo} size="full" name={item.symbol} />
                 </div>
-                <div className="box-menu-more">
-                    <div className="menu-btn"
-                        onClick={(e) => setOpen(!open)}>
-                        {moreIcon}
+                <div className="flex flex-col align-end gap-2 flex-grow-1">
+                    <span className={`${+item.priceChange > 0 ? "text-success" : +item.priceChange < 0 ? 'text-danger' : 'text-secondary'}`}>
+                        {+item.priceChange > 0 ? "+" : +item.priceChange < 0 ? '-' : ''}{item.priceChange?.replace('-', '')}
+                    </span>
+                    <span className="fs-12">
+                        {item.price.toString().replace('-', '')}
+                    </span>
+                    <div className="fs-14 flex flex-col align-end text-end">
+                        <h3>{item.symbol}</h3>
+                        <h5 className="text-secondary">
+                            {item.name}
+                        </h5>
                     </div>
-                    {open &&
-                        <Menu open={open} setOpen={setOpen} items={menuItems}/>
-                    }
                 </div>
-            </div>
-            <div className="popular-stock-name">
-                <h3>{item.symbol}</h3>
-                <h5>
-                    {item.name}
-                </h5>
-            </div>
-            <div className="popular-stock-pnl flex justify-between">
-                <span className={`${item.priceChange > 0 ? "text-success" : item.priceChange < 0 ? 'text-danger' : ''}`}>$ {item.priceChange}</span>
-                {/* <span className="text-secondary">today</span> */}
             </div>
         </div>
     )

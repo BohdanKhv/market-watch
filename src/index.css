@@ -252,6 +252,12 @@ body {
 .text-secondary {
   opacity: .5;
 }
+.text-center {
+  text-align: center;
+}
+.text-end {
+  text-align: end;
+}
 .bg-secondary {
   background-color: var(--color-secondary);
 }

@@ -60,6 +60,7 @@ const SearchField = ({setSearchFocused}) => {
                 placeholder="Search by name or symbol"
                 value={searchQuery}
                 icon={searchIcon}
+                id="search-input"
                 onChange={(e) => {
                     setSearchQuery(e.target.value);
                     if(e.target.value.length > 0) {

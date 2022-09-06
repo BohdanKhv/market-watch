@@ -1,23 +1,25 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { Modal, Input } from '../'
-import { walletIcon } from "../../assets/icons"
-import { addToPortfolio } from "../../features/local/localSlice"
+import { updateFromPortfolio } from "../../features/local/localSlice"
 
-const AddToPortfolio = ({open, setOpen, item, setAlert}) => {
-    const [quantity, setQuantity] = useState(0)
-    const [averagePrice, setAveragePrice] = useState(0)
+const UpdatePortfolio = ({open, setOpen, item, setAlert}) => {
+    const [quantity, setQuantity] = useState(item.quantity)
+    const [averagePrice, setAveragePrice] = useState(item.averagePrice)
     const dispatch = useDispatch()
 
     const handleAddToPortfolio = () => {
         const data = {
+            symbol: item.symbol,
             quantity: quantity,
             averagePrice: averagePrice,
-            ...item
+            price: item.price,
+            name: item.name,
+            logo: item.logo,
         }
-        dispatch(addToPortfolio(data));
+        dispatch(updateFromPortfolio(data));
         setOpen(false);
-        setAlert(`${item.symbol} added to portfolio`);
+        setAlert(`${item.symbol} updated successfully`);
     }
 
     return (
@@ -26,7 +28,7 @@ const AddToPortfolio = ({open, setOpen, item, setAlert}) => {
             modalIsOpen={open}
             setModalIsOpen={setOpen}
             contentLabel={`${item ? item.symbol : ''}`}
-            actionBtnText="Add"
+            actionBtnText="Update"
             onSubmit={handleAddToPortfolio}
             actionDangerBtnText="Cancel"
             onSubmitDanger={() => {
@@ -73,4 +75,4 @@ const AddToPortfolio = ({open, setOpen, item, setAlert}) => {
     )
 }
 
-export default AddToPortfolio
+export default UpdatePortfolio

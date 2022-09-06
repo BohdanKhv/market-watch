@@ -20,7 +20,7 @@ const getTotalPortfolioValue = (portfolio) => {
 const getTopLoss = (portfolio) => {
     const result = portfolio.map(i => {
         const data = {
-            amount: +i.price * +i.quantity - +i.perchesPrice * +i.quantity,
+            amount: +i.price * +i.quantity - +i.averagePrice * +i.quantity,
             item: i
         }
         return data
@@ -31,7 +31,7 @@ const getTopLoss = (portfolio) => {
 const getTopGain = (portfolio) => {
     const result = portfolio.map(i => {
         const data = {
-            amount: +i.price * +i.quantity - +i.perchesPrice * +i.quantity,
+            amount: +i.price * +i.quantity - +i.averagePrice * +i.quantity,
             item: i
         }
         return data
@@ -41,14 +41,14 @@ const getTopGain = (portfolio) => {
 
 const getPnl = (portfolio) => {
     const result = portfolio.reduce((acc, curr) => {
-        return acc + (+curr.price * +curr.quantity - +curr.perchesPrice * +curr.quantity);
+        return acc + (+curr.price * +curr.quantity - +curr.averagePrice * +curr.quantity);
     }, 0);
     return result;
 }
 
 const getPercentagePnl = (portfolio) => {
     const result = portfolio.reduce((acc, curr) => {
-        return acc + (+curr.price * +curr.quantity - +curr.perchesPrice * +curr.quantity) / (+curr.perchesPrice * +curr.quantity);
+        return acc + (+curr.price * +curr.quantity - +curr.averagePrice * +curr.quantity) / (+curr.averagePrice * +curr.quantity);
     }, 0);
     return result.toFixed(2);
 }

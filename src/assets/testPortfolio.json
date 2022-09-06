@@ -6,7 +6,7 @@
         "price": "1436.0",
         "priceChange": "36.00",
         "quantity": "100",
-        "perchesPrice": "47.0"
+        "averagePrice": "47.0"
     },
     {
         "symbol": "NFLX",
@@ -15,7 +15,7 @@
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10",
-        "perchesPrice": "47.0"
+        "averagePrice": "47.0"
     },
     {
         "symbol": "NVDA",
@@ -24,7 +24,7 @@
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10",
-        "perchesPrice": "47.0"
+        "averagePrice": "47.0"
     },
     {
         "symbol": "PYPL",
@@ -33,7 +33,7 @@
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10",
-        "perchesPrice": "47.0"
+        "averagePrice": "47.0"
     },
     {
         "symbol": "ADBE",
@@ -42,7 +42,7 @@
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10",
-        "perchesPrice": "47.0"
+        "averagePrice": "47.0"
     },
     {
         "symbol": "CRM",
@@ -51,7 +51,7 @@
         "price": "12.0",
         "priceChange": "0.00",
         "quantity": "10",
-        "perchesPrice": "47.0"
+        "averagePrice": "47.0"
     },
     {
         "symbol": "INTC",
@@ -60,7 +60,7 @@
         "price": "100.0",
         "priceChange": "0.00",
         "quantity": "10",
-        "perchesPrice": "47.0"
+        "averagePrice": "47.0"
     },
     {
         "symbol": "AMD",
@@ -69,6 +69,6 @@
         "price": "53.0",
         "priceChange": "0.00",
         "quantity": "1000",
-        "perchesPrice": "47.0"
+        "averagePrice": "47.0"
     }
 ]
