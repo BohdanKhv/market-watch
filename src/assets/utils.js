@@ -47,9 +47,9 @@ const getPnl = (portfolio) => {
 }
 
 const getPercentagePnl = (portfolio) => {
-    const result = portfolio.reduce((acc, curr) => {
-        return acc + (+curr.price * +curr.quantity - +curr.averagePrice * +curr.quantity) / (+curr.averagePrice * +curr.quantity);
-    }, 0);
+    const pnl = getPnl(portfolio);
+    const portfolioValue = getTotalPortfolioValue(portfolio);
+    const result = pnl / portfolioValue * 100;
     return result.toFixed(2);
 }
 

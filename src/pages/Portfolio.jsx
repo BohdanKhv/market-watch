@@ -27,7 +27,7 @@ const Portfolio = () => {
     <div className="content-body">
     {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
       {portfolio.length > 0 ? (
-      <div className="flex justify-between gap-5 flex-sm-col flex-wrap">
+      <div className="flex justify-between gap-4 flex-sm-col flex-wrap">
         <div className="flex-grow-2 order-sm-2">
           <Box title="Portfolio" menuItems={listMenuItems} size="lg">
             <div className="flex flex-col justify-between flex-wrap">
@@ -47,7 +47,7 @@ const Portfolio = () => {
             </div>
           </Box>
         </div>
-        <div className="flex flex-col flex-grow-1 gap-5 flex-sm-row order-sm-1 flex-sm-wrap">
+        <div className="flex flex-col flex-grow-1 gap-4 flex-sm-row order-sm-1 flex-sm-wrap">
           <Total/>
           <Summary/>
           <div className="flex-grow-1 order-sm-3">

@@ -10,22 +10,22 @@
         "symbol": "MSFT",
         "name": "Microsoft Corp.",
         "logo": "https://s3-symbol-logo.tradingview.com/microsoft--600.png",
-        "price": "101.0",
+        "price": "101.6",
         "priceChange": "1.00"
     },
     {
         "symbol": "GOOG",
         "name": "Google Inc.",
         "logo": "https://s3-symbol-logo.tradingview.com/alphabet--600.png",
-        "price": "100.0",
+        "price": "260.0",
         "priceChange": "0.00"
     },
     {
         "symbol": "AMZN",
         "name": "Amazon.com Inc.",
         "logo": "https://s3-symbol-logo.tradingview.com/amazon--600.png",
-        "price": "100.0",
-        "priceChange": "0.00"
+        "price": "1560.36",
+        "priceChange": "96.36"
     },
     {
         "symbol": "FB",
@@ -42,18 +42,20 @@
         "priceChange": "0.00"
     },
     {
-        "symbol": "NFLX",
-        "name": "Netflix Inc.",
-        "logo": "https://s3-symbol-logo.tradingview.com/netflix--600.png",
-        "price": "100.0",
-        "priceChange": "0.00"
-    },
-    {
         "symbol": "NVDA",
         "name": "NVIDIA Corp.",
         "logo": "https://s3-symbol-logo.tradingview.com/nvidia--600.png",
         "price": "100.0",
         "priceChange": "0.00"
+    },
+    {
+        "symbol": "AMD",
+        "name": "Advanced Micro Devices Inc.",
+        "logo": "https://s3-symbol-logo.tradingview.com/advanced-micro-devices--600.png",
+        "price": "53.0",
+        "priceChange": "0.00",
+        "quantity": "1000",
+        "averagePrice": "47.0"
     },
     {
         "symbol": "PYPL",

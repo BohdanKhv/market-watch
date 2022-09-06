@@ -26,7 +26,7 @@ const Watchlist = () => {
     <div className="content-body">
       {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
       {favorite.length > 0 ? (
-      <div className="flex justify-between gap-5 flex-sm-col">
+      <div className="flex justify-between gap-4 flex-sm-col">
         <div className="flex-grow-2 order-sm-2">
           <Box title="Watchlist" menuItems={watchlistMenuItems} size="lg">
             <div className="flex flex-col">
@@ -47,17 +47,17 @@ const Watchlist = () => {
           </Box>
         </div>
         {favorite.length > 4 && (
-          <div className="flex flex-col flex-grow-1 gap-5 order-sm-1">
+          <div className="flex flex-col flex-grow-1 gap-4 order-sm-1">
             <Box title="Performance" size="lg">
               <div className="flex flex-col flex-sm-row">
                 <div className="flex-grow-1">
-                  <h4 className="weight-500 p-3">
+                  <h4 className="weight-500 p-3 border-bottom mb-1">
                     Best of the day
                   </h4>
                   <PopularStock item={[...favorite].sort((a, b) => +b.priceChange - +a.priceChange)[0]} />
                 </div>
                 <div className="flex-grow-1">
-                  <h4 className="weight-500 p-3">
+                  <h4 className="weight-500 p-3 border-bottom mb-1">
                     Worst of the day
                   </h4>
                   <PopularStock item={[...favorite].sort((a, b) => +a.priceChange - +b.priceChange)[0]} />
