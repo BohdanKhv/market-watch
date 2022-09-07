@@ -114,6 +114,9 @@ body {
 
 /* Flex */
 
+.grid {
+  display: grid;
+}
 .flex {
   display: flex;
 }
@@ -207,6 +210,9 @@ body {
 }
 .fs-16 {
   font-size: 16px;
+}
+.fs-18 {
+  font-size: 18px;
 }
 
 .btn {
@@ -665,10 +671,36 @@ input[type="number"] {
 }
 
 .text-nowrap {
+  position: relative;
   display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.flex-b-100 {
+  flex-basis: 100%;
+}
+.flex-b-75 {
+  flex-basis: 75%;
+}
+.flex-b-65 {
+  flex-basis: 65%;
+}
+.flex-b-50 {
+  flex-basis: 50%;
+}
+.flex-b-25 {
+  flex-basis: 25%;
+}
+.flex-b-35 {
+  flex-basis: 35%;
 }
 
 .break-words {
