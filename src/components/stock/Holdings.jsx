@@ -12,9 +12,9 @@ const Holdings = () => {
     }, [])
 
     return (
-        <Box title="Holdings" size="lg">
-            <div className="py-3 flex flex-col">
-                <div className="flex p-3 justify-between align-center flex-grow-1 gap-5">
+        <Box title="Holdings" size="sm">
+            <div className="py-3 flex flex-col py-sm-2">
+                <div className="flex p-3 p-sm-75 justify-between align-center flex-grow-1 gap-5 border-bottom">
                     <h4 className="text-secondary weight-400">
                         Symbol
                     </h4>

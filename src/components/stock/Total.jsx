@@ -13,13 +13,13 @@ const Total = () => {
 
     return (
         <div className="flex-grow-sm-1">
-            <Box title="Total" size="lg">
-                <div className="p-3 flex flex-col gap-4">
+            <div className="box-content">
+                <div className="p-3 p-sm-75 flex flex-col gap-4">
                     <div>
                     <h4 className="text-secondary weight-400">
                         Market Value
                     </h4>
-                    <h2 className="pt-1 weight-400 px-1">$ {addCommaToNumber(totalPortfolioValue)}</h2>
+                    <h2 className="pt-2 weight-400 px-1">$ {addCommaToNumber(totalPortfolioValue)}</h2>
                     </div>
                     <div>
                     <h4 className="text-secondary weight-400">
@@ -42,7 +42,7 @@ const Total = () => {
                     </div>
                     </div>
                 </div>
-            </Box>
+            </div>
         </div>
     )
 }

@@ -10,18 +10,18 @@ const PopularStock = ({item, className, menuItems}) => {
                     <Avatar image={item.logo} size="full" name={item.symbol} />
                 </div>
                 <div className="flex flex-col align-end gap-2 flex-grow-1">
-                    <span className={`${+item.priceChange > 0 ? "text-success" : +item.priceChange < 0 ? 'text-danger' : 'text-secondary'}`}>
-                        {+item.priceChange > 0 ? "+" : +item.priceChange < 0 ? '-' : ''}{item.priceChange?.replace('-', '')}
-                    </span>
+                    <div className="fs-14 flex flex-col align-end text-end">
+                        <h3>{item.symbol}</h3>
+                        {/* <h5 className="text-secondary">
+                            {item.name}
+                        </h5> */}
+                    </div>
                     <span className="fs-12">
                         {item.price.toString().replace('-', '')}
                     </span>
-                    <div className="fs-14 flex flex-col align-end text-end">
-                        <h3>{item.symbol}</h3>
-                        <h5 className="text-secondary">
-                            {item.name}
-                        </h5>
-                    </div>
+                    <span className={`${+item.priceChange > 0 ? "text-success" : +item.priceChange < 0 ? 'text-danger' : 'text-secondary'}`}>
+                        {+item.priceChange > 0 ? "+" : +item.priceChange < 0 ? '-' : ''}{item.priceChange?.replace('-', '')}
+                    </span>
                 </div>
             </div>
         </div>

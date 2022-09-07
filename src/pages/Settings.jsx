@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { infoIcon, moonIcon, rightArrowIcon, sunIcon, trashIcon } from '../assets/icons'
 import { Box, Modal } from '../components'
 import { setTheme, resetData } from '../features/local/localSlice'
@@ -8,6 +9,7 @@ const Settings = () => {
     const theme = useSelector(state => state.local.theme);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.title = 'STOKIN - Settings';
@@ -73,7 +75,9 @@ const Settings = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex justify-between align-center px-4 py-3 border-bottom hover">
+                    <div className="flex justify-between align-center px-4 py-3 border-bottom hover"
+                        onClick={() => navigate('/about')}
+                    >
                         <div className="flex align-center">
                             <i className="icon">
                                 {infoIcon}

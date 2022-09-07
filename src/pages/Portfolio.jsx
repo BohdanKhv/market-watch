@@ -47,9 +47,16 @@ const Portfolio = () => {
             </div>
           </Box>
         </div>
-        <div className="flex flex-col flex-grow-1 gap-4 flex-sm-row order-sm-1 flex-sm-wrap">
-          <Total/>
-          <Summary/>
+        <div className="flex flex-col flex-grow-1 gap-4 order-sm-1 flex-sm-wrap">
+          <div className="flex-grow-1">
+            <h2 className="title-1 px-2 pb-4">
+              Summary
+            </h2>
+            <div className="flex flex-col gap-3 flex-sm-row">
+              <Total/>
+              <Summary/>
+            </div>
+          </div>
           <div className="flex-grow-1 order-sm-3">
             <Holdings/>
           </div>

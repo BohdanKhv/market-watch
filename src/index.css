@@ -23,8 +23,8 @@
 
 [data-theme='dark'] {
   --color-main: #202020;
-  --color-main-25: rgb(32, 32, 32, 0.9);
-  --color-main-50: rgb(32, 32, 32, 0.35);
+  --color-main-25: rgb(32, 32, 32, 0.8);
+  --color-main-50: rgb(32, 32, 32, 0.5);
   --color-secondary: #363636;
   --color-secondary-light: #2e2e2e;
   --color-tertiary: #181818;
@@ -39,8 +39,8 @@
 
 [data-theme='light'] {
   --color-main: #ffffff;
-  --color-main-25: rgb(255, 255, 255, 0.9);
-  --color-main-50: rgb(255, 255, 255, 0.35);
+  --color-main-25: rgb(255, 255, 255, 0.8);
+  --color-main-50: rgb(255, 255, 255, 0.5);
   --color-secondary: #f6f7f8;
   --color-secondary-light: #f6f7f8;
   --color-tertiary: #f0f0f0;
@@ -187,6 +187,18 @@ body {
   align-items: flex-start;
 }
 
+.title-1 {
+  font-size: 35px;
+  font-weight: 600;
+}
+.title-2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.title-3 {
+  font-size: 18px;
+  font-weight: 600;
+}
 .fs-12 {
   font-size: 12px;
 }
@@ -266,12 +278,12 @@ body {
   border-bottom: 1px solid var(--color-secondary);
 }
 .border-b-r {
-  border-bottom-right-radius: var(--border-radius-sm);
-  border-bottom-left-radius: var(--border-radius-sm);
+  border-bottom-right-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
 }
 .border-t-r {
-  border-top-right-radius: var(--border-radius-sm);
-  border-top-left-radius: var(--border-radius-sm);
+  border-top-right-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
 }
 
 .weight-500 {
@@ -448,6 +460,9 @@ input[type="number"] {
 }
 .p-2 {
   padding: 0.5rem;
+}
+.p-75 {
+  padding: 0.75rem;
 }
 .p-3 {
   padding: 1rem;
@@ -649,15 +664,26 @@ input[type="number"] {
   white-space: nowrap;
 }
 
+.text-nowrap {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.break-words {
+  word-break: break-word;
+}
+
 @media (max-width: 769px) {
   .flex-sm-wrap {
     flex-wrap: wrap;
   }
 
   .content {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 60px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 20px;
   }
 
   .flex-sm-col {
@@ -692,5 +718,33 @@ input[type="number"] {
   }
   h5 {
     font-size: 12px;
+  }
+  .title-sm-1 {
+    font-size: 35px;
+    font-weight: 600;
+  }
+  .title-sm-2 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .title-sm-3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .py-sm-3 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .py-sm-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .px-sm-2 {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .p-sm-75 {
+    padding: 0.75rem;
   }
 }

@@ -19,14 +19,14 @@ const Summary = () => {
 
     return (
         <div className="flex-grow-sm-1">
-            <Box title="Summary" size="lg">
-                <div className="p-3 flex flex-col gap-4">
+            <div className="box-content">
+                <div className="p-3 p-sm-75 flex flex-col gap-4">
                     <div>
                         <h4 className="text-secondary weight-400">
                             P&L
                         </h4>
                         <div className={`flex justify-between align-center pt-2 px-1 gap-4 ${pnl > 0 ? 'text-success' : pnl < 0 ? 'text-danger' : 'text-secondary' }`}>
-                            <h3 className="weight-400">
+                            <h3 className="weight-400 break-words">
                             {pnl > 0 ? '+ ' : pnl < 0 ? '- ' : ''}$ {addCommaToNumber(pnl)?.replace('-', '')}
                             </h3>
                             <h5 className="fs-12 weight-400">
@@ -61,7 +61,7 @@ const Summary = () => {
                         </div>
                     </div>
                 </div>
-            </Box>
+            </div>
         </div>
     )
 }

@@ -1,7 +1,6 @@
 .list-item {
     display: flex;
     justify-content: space-between;
-    padding: 8px;
     padding: 1rem;
     align-items: center;
     position: relative;
@@ -74,4 +73,10 @@
     background-color: var(--color-primary);
     height: 50px;
     border-radius: 5px;
+}
+
+@media (max-width: 769px) {
+    .list-item {
+        padding: 1rem 0.75rem;
+    }
 }

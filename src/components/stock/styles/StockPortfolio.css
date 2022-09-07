@@ -82,3 +82,9 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media (max-width: 769px) {
+    .stock-portfolio-card {
+        padding: 1rem 0.5rem;
+    }
+}
