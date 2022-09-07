@@ -9,12 +9,12 @@ const Total = () => {
 
     useEffect(() => {
         setTotalPortfolioValue(getTotalPortfolioValue(portfolio));
-    }, [])
+    }, [portfolio])
 
     return (
         <div className="flex-grow-sm-1">
             <div className="box-content">
-                <div className="p-3 p-sm-75 flex flex-col gap-4">
+                <div className="p-3 p-sm-75 flex flex-col gap-4 white-space-nowrap">
                     <div>
                     <h4 className="text-secondary weight-400">
                         Market Value

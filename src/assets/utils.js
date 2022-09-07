@@ -17,6 +17,13 @@ const getTotalPortfolioValue = (portfolio) => {
     return result;
 }
 
+const getTotalInvestment = (portfolio) => {
+    const result = portfolio.reduce((acc, curr) => {
+        return acc + curr.averagePrice * curr.quantity;
+    }, 0);
+    return result.toFixed(2);
+}
+
 const getTopLoss = (portfolio) => {
     const result = portfolio.map(i => {
         const data = {
@@ -43,13 +50,13 @@ const getPnl = (portfolio) => {
     const result = portfolio.reduce((acc, curr) => {
         return acc + (+curr.price * +curr.quantity - +curr.averagePrice * +curr.quantity);
     }, 0);
-    return result;
+    return result.toFixed(2);
 }
 
 const getPercentagePnl = (portfolio) => {
-    const pnl = getPnl(portfolio);
+    const totalInvestment = getTotalInvestment(portfolio);
     const portfolioValue = getTotalPortfolioValue(portfolio);
-    const result = pnl / portfolioValue * 100;
+    const result = (portfolioValue - totalInvestment) / totalInvestment * 100;
     return result.toFixed(2);
 }
 
@@ -67,6 +74,7 @@ const getPercentHoldings = (portfolio) => {
 
 export {
     addCommaToNumber,
+    getTotalInvestment,
     numberFormatter,
     getTotalPortfolioValue,
     getTopLoss,

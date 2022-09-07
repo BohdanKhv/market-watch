@@ -89,10 +89,10 @@ const PopularStock = ({item, className, index, setAlert}) => {
                                 Avg Price
                             </span>
                             <span className={`${+item.price > +item.averagePrice ? 'text-success' : +item.price < +item.averagePrice ? 'text-danger' : 'text-secondary'}`}>
-                                {item.averagePrice}
+                                {addCommaToNumber(item.averagePrice)}
                             </span>
                             <span className="fs-12">
-                                $ {addCommaToNumber(item.averagePrice * item.quantity)}
+                                {addCommaToNumber(item.averagePrice * item.quantity)}
                             </span>
                         </div>
                         <div className="stock-portfolio-price">
@@ -103,7 +103,7 @@ const PopularStock = ({item, className, index, setAlert}) => {
                                 {item.price}
                             </span>
                             <span className="fs-12 white-space-nowrap">
-                                $ {addCommaToNumber(+item.price * +item.quantity)}
+                                {addCommaToNumber(+item.price * +item.quantity)}
                             </span>
                         </div>
                     </div>
