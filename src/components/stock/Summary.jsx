@@ -36,7 +36,7 @@ const Summary = () => {
                         <div className={`flex flex-wrap justify-between align-center pt-2 px-1 ${pnl > 0 ? 'text-success' : pnl < 0 ? 'text-danger' : 'text-secondary' }`}>
                             <div className="flex-b-65 w-min-0">
                                 <div className="fs-16 text-ellipsis">
-                                    {pnl > 0 ? '+ ' : pnl < 0 ? '- ' : ''}$ {format(+pnl)?.replace('-', '')}
+                                    {pnl > 0 ? '+ ' : pnl < 0 ? '- ' : ''}{format(+pnl)?.replace('-', '')}
                                 </div>
                             </div>
                             <div className="flex-b-35 w-min-0 text-end">

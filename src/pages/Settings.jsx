@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { coinIcon, infoIcon, moonIcon, rightArrowIcon, sunIcon, trashIcon } from '../assets/icons'
+import { infoIcon, moneyIcon, moonIcon, rightArrowIcon, sunIcon, trashIcon } from '../assets/icons'
 import { Box, Modal } from '../components'
 import { setTheme, resetData, setNumberFormat } from '../features/local/localSlice'
 
@@ -64,7 +64,7 @@ const Settings = () => {
                     >
                         <div className="flex align-center">
                             <i className="icon">
-                                {coinIcon}
+                                {moneyIcon}
                             </i>
                             <h4 className="weight-500 ms-3">
                                 {numberFormat === 'full' ? '1,000,000, 1,000' : '1M, 1K'}

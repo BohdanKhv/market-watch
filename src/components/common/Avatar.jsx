@@ -33,6 +33,7 @@ const Avatar = ({image, name, size}) => {
           src={image} 
           alt={name} 
           decoding="async"
+          loading="lazy"
           onError={() => setImageErr(true)}
         />
         :

@@ -32,6 +32,10 @@
     color: var(--text-dark);
     padding-bottom: 16px;
 }
+.navbar .logo img {
+    width: 60px;
+    height: 60px;
+}
 
 .navbar .logo .company {
     height: 34px;
