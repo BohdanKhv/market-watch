@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Menu, UpdatePortfolio, Avatar } from '../';
-import { addCommaToNumber } from '../../assets/utils';
+import { addCommaToNumber, numberFormatter } from '../../assets/utils';
 import { starEmptyIcon, starFillIcon, trashIcon, walletFillIcon } from '../../assets/icons';
 import { removeFromPortfolio, removeFromFavorite, addToFavorite } from '../../features/local/localSlice';
 import './styles/StockPortfolio.css'
@@ -9,8 +9,17 @@ import './styles/StockPortfolio.css'
 const PopularStock = ({item, className, index, setAlert}) => {
     const [open, setOpen] = useState(false);
     const [openUpdateToPortfolio, setOpenUpdateToPortfolio] = useState(false);
+    const numberFormat = useSelector(state => state.local.numberFormat);
     const favorite = useSelector(state => state.local.favorite).filter(i => i.symbol === item.symbol)[0];
     const dispatch = useDispatch();
+
+    const format = (n) => {
+        if(numberFormat === 'full') {
+            return addCommaToNumber(n);
+        } else {
+            return addCommaToNumber(numberFormatter(n));
+        }
+    }
 
     return (
         <div className="pos-relative">
@@ -80,7 +89,7 @@ const PopularStock = ({item, className, index, setAlert}) => {
                             {item.name}
                         </h5>
                         <div className="fs-12">
-                            <span className="weight-500">{item.quantity}</span> <span className="text-secondary">Shares</span>
+                            <span className="weight-500">{addCommaToNumber(item.quantity)}</span> <span className="text-secondary">Shares</span>
                         </div>
                     </div>
                     <div className="flex gap-3 flex-grow-1 justify-end">
@@ -92,7 +101,7 @@ const PopularStock = ({item, className, index, setAlert}) => {
                                 {addCommaToNumber(item.averagePrice)}
                             </span>
                             <span className="fs-12">
-                                {addCommaToNumber(item.averagePrice * item.quantity)}
+                                {format(item.averagePrice * item.quantity)}
                             </span>
                         </div>
                         <div className="stock-portfolio-price">
@@ -103,7 +112,7 @@ const PopularStock = ({item, className, index, setAlert}) => {
                                 {item.price}
                             </span>
                             <span className="fs-12 white-space-nowrap">
-                                {addCommaToNumber(+item.price * +item.quantity)}
+                                {format(+item.price * +item.quantity)}
                             </span>
                         </div>
                     </div>

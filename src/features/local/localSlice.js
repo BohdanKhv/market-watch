@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const theme = localStorage.getItem("theme");
+const numberFormat = localStorage.getItem("numberFormat");
 const favorite = JSON.parse(localStorage.getItem("favorite"));
 const portfolio = JSON.parse(localStorage.getItem("portfolio"));
 
 const initialState = {
     theme: theme || "light",
+    numberFormat: numberFormat || 'full',
     favorite: favorite || [],
     portfolio: portfolio || [],
 };
@@ -16,6 +18,7 @@ export const localSlice = createSlice({
     reducers: {
         resetLocal: (state) => {
             state.theme = "light";
+            state.numberFormat = "full";
         },
         resetData: (state) => {
             state.favorite = [];
@@ -24,6 +27,10 @@ export const localSlice = createSlice({
         setTheme: (state, action) => {
             state.theme = action.payload;
             localStorage.setItem("theme", action.payload);
+        },
+        setNumberFormat: (state, action) => {
+            state.numberFormat = action.payload;
+            localStorage.setItem("numberFormat", action.payload);
         },
         addToFavorite: (state, action) => {
             const index = state.favorite.findIndex(
@@ -71,6 +78,7 @@ export const {
     resetLocal, 
     resetData,
     setTheme,
+    setNumberFormat,
     addToFavorite,
     removeFromFavorite,
     addToPortfolio,

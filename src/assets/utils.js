@@ -4,7 +4,7 @@ const addCommaToNumber = (_number) => {
 
 const numberFormatter = (_number) => {
     // format 1000 to 1k or 1000000 to 1m etc
-    const number = +_number;
+    const number = Math.abs(_number);
     const suffixes = ['', 'K', 'M', 'B', 'T'];
     const suffixIndex = Math.floor(Math.log10(number) / 3);
     return `${Math.round(number / Math.pow(10, suffixIndex * 3))}${suffixes[suffixIndex]}`;
@@ -21,7 +21,7 @@ const getTotalInvestment = (portfolio) => {
     const result = portfolio.reduce((acc, curr) => {
         return acc + curr.averagePrice * curr.quantity;
     }, 0);
-    return result.toFixed(2);
+    return result.toFixed(0);
 }
 
 const getTopLoss = (portfolio) => {
@@ -50,7 +50,7 @@ const getPnl = (portfolio) => {
     const result = portfolio.reduce((acc, curr) => {
         return acc + (+curr.price * +curr.quantity - +curr.averagePrice * +curr.quantity);
     }, 0);
-    return result.toFixed(2);
+    return result.toFixed(0);
 }
 
 const getPercentagePnl = (portfolio) => {

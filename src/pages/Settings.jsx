@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { infoIcon, moonIcon, rightArrowIcon, sunIcon, trashIcon } from '../assets/icons'
+import { coinIcon, infoIcon, moonIcon, rightArrowIcon, sunIcon, trashIcon } from '../assets/icons'
 import { Box, Modal } from '../components'
-import { setTheme, resetData } from '../features/local/localSlice'
+import { setTheme, resetData, setNumberFormat } from '../features/local/localSlice'
 
 const Settings = () => {
     const theme = useSelector(state => state.local.theme);
+    const numberFormat = useSelector(state => state.local.numberFormat);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -56,6 +57,21 @@ const Settings = () => {
                         </div>
                         <div className="weight-500">
                             {theme === 'light' ? 'Light' : 'Dark'}
+                        </div>
+                    </div>
+                    <div className="flex justify-between align-center px-4 py-3 border-bottom hover"
+                        onClick={() => dispatch(setNumberFormat(numberFormat === 'full' ? 'short' : 'full'))}
+                    >
+                        <div className="flex align-center">
+                            <i className="icon">
+                                {coinIcon}
+                            </i>
+                            <h4 className="weight-500 ms-3">
+                                {numberFormat === 'full' ? '1,000,000, 1,000' : '1M, 1K'}
+                            </h4>
+                        </div>
+                        <div className="weight-500">
+                            {numberFormat === 'full' ? 'Full' : 'Short'}
                         </div>
                     </div>
                     <div className="flex justify-between align-center px-4 py-3 border-bottom hover"
