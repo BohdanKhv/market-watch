@@ -5,16 +5,6 @@ import { trashIcon, shareIcon } from '../assets/icons'
 import { Box, StockPortfolio, Holdings, Summary, Total, Alert } from '../components'
 import testStock from '../assets/testStock.json'
 
-const listMenuItems = [
-  {
-    title: "Delete",
-    icon: trashIcon
-  },
-  {
-    title: "Share",
-    icon: shareIcon
-  }
-]
 
 const Portfolio = () => {
   const [alert, setAlert] = useState('')
@@ -22,6 +12,32 @@ const Portfolio = () => {
   const [shared, setShared] = useState(false);
   const { portfolio } = useSelector(state => state.local)
   const [items, setItems] = useState(portfolio || []);
+
+  const listMenuItems = [
+    {
+      title: "Share",
+      icon: shareIcon,
+      onClick: () => {
+        const str = '?q=' + items
+        .map(item =>
+          item.symbol.toUpperCase() + ":"
+        + item.quantity + ":"
+        + item.averagePrice
+        )
+        .join(',');
+        const domain = window.location.origin;
+        const url = domain + "/portfolio" + str;
+        navigator.clipboard.writeText(url);
+        setAlert('Copied to clipboard');
+        // Share
+        navigator.share({
+          title: 'Stocks',
+          text: 'Check out my portfolio',
+          url: url,
+        });
+      }
+    }
+  ]
 
   useEffect(() => {
     const query = searchParams.get('q');
