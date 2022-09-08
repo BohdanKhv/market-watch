@@ -9,14 +9,21 @@ const Avatar = ({image, name, size}) => {
   useEffect(() => {
     if (imageRef.current) {
         imageRef.current.addEventListener("load", () => {
-            setLoading(true)
+            setLoading(true);
+
+            // Cash image for offline use
+            if ('caches' in window) {
+                caches.open('companyImage').then(cache => {
+                    cache.add(imageRef.current.src);
+                })
+            }
         })
     }
 
     return () => {
         if (imageRef.current) {
             imageRef.current.removeEventListener("load", () => {
-                setLoading(false)
+                setLoading(false);
             });
         }
     }

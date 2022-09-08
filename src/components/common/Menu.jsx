@@ -30,14 +30,15 @@ const Menu = ({ children, open, setOpen, index, items }) => {
             onClick={() => setOpen(false)}
         >
             {items ? items.map((item, i) => (
-                        <div className="menu-item"
-                            onClick={() => {
-                                item.onClick();
-                            }}
-                        >
-                            <span className="menu-item-icon">{item.icon}</span>
-                            {item.title}
-                        </div>
+                <div className="menu-item"
+                    key={`menu-item-${i}`}
+                    onClick={() => {
+                        item.onClick();
+                    }}
+                >
+                    <span className="menu-item-icon">{item.icon}</span>
+                    {item.title}
+                </div>
                 )) : children
             }
         </div>

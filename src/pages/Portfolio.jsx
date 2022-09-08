@@ -60,7 +60,7 @@ const Portfolio = () => {
     {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
       {items.length > 0 ? (
       <div className="flex justify-between gap-4 flex-sm-col flex-wrap">
-        <div className="flex-grow-2 order-sm-2">
+        <div className="flex-grow-2 order-sm-1">
           <Box title="Portfolio" secondary={shared ? "Shared" : ''} menuItems={listMenuItems} size="lg">
             <div className="flex flex-col justify-between flex-wrap">
               {items.map((item, index) => (
@@ -79,7 +79,7 @@ const Portfolio = () => {
             </div>
           </Box>
         </div>
-        <div className="flex flex-col flex-grow-1 gap-4 order-sm-1 flex-sm-wrap">
+        <div className="flex flex-col flex-grow-1 gap-4 order-sm-2 flex-sm-wrap">
           <div className="flex-grow-1">
             <h2 className="title-1 px-2 pb-4">
               Summary
