@@ -3,14 +3,18 @@ import { Menu } from '../';
 import { moreIcon } from '../../assets/icons';
 import './styles/Box.css'
 
-const Box = ({children, title, menuItems, size}) => {
+const Box = ({children, title, menuItems, size, secondary}) => {
     const [open, setOpen] = useState(false);
 
     return (
         <div className="box">
             {title &&
                 <div className={`box-title${size ? ` ${size}`: ''}`}>
-                        <h3>{title}</h3>
+                        <h3>{title}
+                        <span className="text-secondary fs-12 weight-400 ms-1">
+                            {secondary}
+                        </span>
+                        </h3>
                     {menuItems &&
                         <div className="box-menu-more">
                             <div className="menu-btn"

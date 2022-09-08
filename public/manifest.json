@@ -3,17 +3,17 @@
   "name": "Stock Market Portfolio App",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "./icons/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "./icons/logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "./icons/logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
@@ -26,7 +26,7 @@
       "url": "/watchlist",
       "icons": [
         {
-          "src": "portfolio.png",
+          "src": "./icons/watchlist.png",
           "sizes": "64x64 32x32 24x24 16x16",
           "type": "image/x-icon"
         }
@@ -39,7 +39,7 @@
       "url": "/portfolio",
       "icons": [
         {
-          "src": "market.png",
+          "src": "./icons/market.png",
           "sizes": "64x64 32x32 24x24 16x16",
           "type": "image/x-icon"
         }

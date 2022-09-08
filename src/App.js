@@ -24,7 +24,6 @@ function App() {
           <Route path="/" element={<Watchlist />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/share" element={<Share />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </div>

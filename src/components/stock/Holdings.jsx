@@ -3,12 +3,13 @@ import { useSelector } from 'react-redux'
 import { getPercentHoldings } from '../../assets/utils'
 import { Box } from '../'
 
-const Holdings = () => {
+const Holdings = ({sharedPortfolio}) => {
     const [percentHoldings, setPercentHoldings] = useState([]);
     const { portfolio } = useSelector(state => state.local)
+    const [items, setItems] = useState(sharedPortfolio || portfolio || []);
 
     useEffect(() => {
-        setPercentHoldings(getPercentHoldings(portfolio));
+        setPercentHoldings(getPercentHoldings(items));
     }, [])
 
     return (
