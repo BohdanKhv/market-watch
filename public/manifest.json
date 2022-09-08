@@ -20,28 +20,14 @@
   ],
   "shortcuts": [
     {
-      "name": "Watchlist",
-      "short_name": "Watchlist",
-      "description": "View your watchlist",
-      "url": "/watchlist",
-      "icons": [
-        {
-          "src": "./icons/watchlist.png",
-          "sizes": "64x64 32x32 24x24 16x16",
-          "type": "image/x-icon"
-        }
-      ]
-    },
-    {
       "name": "View Portfolio",
-      "short_name": "View Portfolio",
-      "description": "View your portfolio",
+      "short_name": "Portfolio",
+      "description": "View your portfolio of stocks",
       "url": "/portfolio",
       "icons": [
         {
-          "src": "./icons/market.png",
-          "sizes": "64x64 32x32 24x24 16x16",
-          "type": "image/x-icon"
+          "src": "./icons/logo192.png",
+          "sizes": "192x192"
         }
       ]
     }
