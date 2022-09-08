@@ -67,6 +67,12 @@ const Portfolio = () => {
   }, [searchParams])
 
   useEffect(() => {
+    if(!shared) {
+      setItems(portfolio);
+    }
+  }, [portfolio, shared])
+
+  useEffect(() => {
     document.title = 'STOKIN - Portfolio';
     window.scrollTo(0, 0);
   }, [])

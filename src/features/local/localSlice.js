@@ -23,6 +23,8 @@ export const localSlice = createSlice({
         resetData: (state) => {
             state.favorite = [];
             state.portfolio = [];
+            localStorage.removeItem("favorite");
+            localStorage.removeItem("portfolio");
         },
         setTheme: (state, action) => {
             state.theme = action.payload;

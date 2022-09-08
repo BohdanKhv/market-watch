@@ -56,6 +56,12 @@ const Watchlist = () => {
   }, [searchParams])
 
   useEffect(() => {
+    if(!shared) {
+      setItems(favorite);
+    }
+  }, [favorite, shared])
+
+  useEffect(() => {
     document.title = 'STOKIN - Watchlist';
     window.scrollTo(0, 0);
   }, [])
