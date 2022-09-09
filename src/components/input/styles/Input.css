@@ -1,22 +1,31 @@
 .input-wrapper {
     display: flex;
-    border: 2px solid var(--color-secondary);
     border-radius: var(--border-radius);
-    padding: 8px 16px;
+    padding: 14px 16px;
     fill: var(--text-dark);
+    color: var(--text-dark);
     cursor: text;
     transition-duration: var(--transition-duration);
     background-color: var(--color-secondary);
 }
 .input-wrapper:focus-within,
 .input-wrapper:hover {
-    border: 2px solid var(--color-primary);
-    fill: var(--color-primary);
+    background-color: var(--text-dark);
+    fill: var(--text-light);
+    color: var(--text-light);
+}
+
+.input-wrapper:hover input,
+.input-wrapper:focus-within input,
+.input-wrapper:focus-within input::placeholder,
+.input-wrapper:hover input::placeholder {
+    fill: var(--text-light);
+    color: var(--text-light);
 }
 
 .input-wrapper input {
     width: 100%;
-    font-size: 16px;
+    font-size: 18px;
     border: none;
     outline: none;
     background-color: transparent;
@@ -29,6 +38,6 @@
 }
 
 .input-icon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
 }

@@ -54,6 +54,7 @@
 }
 
 * {
+  user-select: none;
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
@@ -201,6 +202,9 @@ body {
 .title-3 {
   font-size: 18px;
   font-weight: 600;
+}
+.fs-10 {
+  font-size: 10px;
 }
 .fs-12 {
   font-size: 12px;
@@ -705,6 +709,14 @@ input[type="number"] {
 
 .break-words {
   word-break: break-word;
+}
+.break-words-all {
+  word-break: break-all;
+}
+
+.mw-50-px {
+  max-width: 60px;
+  min-width: 60px;
 }
 
 @media (max-width: 769px) {

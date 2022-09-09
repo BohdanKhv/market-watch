@@ -1,7 +1,6 @@
 {
   "short_name": "STOKIN",
   "name": "Stock Market Portfolio App",
-  "start_url": "https://corngif.com",
   "icons": [
     {
       "src": "./icons/favicon.ico",
@@ -24,7 +23,7 @@
       "name": "View Portfolio",
       "short_name": "Portfolio",
       "description": "View your portfolio of stocks",
-      "url": "/portfolio",
+      "url": "./portfolio",
       "icons": [
         {
           "src": "./icons/portfolio192.png",
@@ -33,7 +32,8 @@
       ]
     }
   ],
-  "display": "portrait",
+  "start_url": "/",
+  "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }

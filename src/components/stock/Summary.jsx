@@ -2,20 +2,21 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { addCommaToNumber, getTopLoss, getTopGain, getPnl, getPercentagePnl, numberFormatter } from '../../assets/utils'
 
-const Summary = ({sharedPortfolio}) => {
+const Summary = ({portfolio}) => {
     const [topLoss, setTopLoss] = useState(0);
     const [topGain, setTopGain] = useState(0);
     const [pnl, setPnl] = useState(0);
     const [percentPnl, setPercentPnl] = useState(0);
-    const { portfolio, numberFormat } = useSelector(state => state.local)
-    const [items, setItems] = useState(sharedPortfolio || portfolio || []);
+    const { numberFormat } = useSelector(state => state.local)
 
     useEffect(() => {
-        setTopLoss(getTopLoss(items));
-        setTopGain(getTopGain(items));
-        setPnl(getPnl(items));
-        setPercentPnl(getPercentagePnl(items));
-    }, [items])
+        if(portfolio.length > 0) {
+            setTopLoss(getTopLoss(portfolio));
+            setTopGain(getTopGain(portfolio));
+            setPnl(getPnl(portfolio));
+            setPercentPnl(getPercentagePnl(portfolio));
+        }
+    }, [portfolio])
 
     const format = (n) => {
         if(numberFormat === 'full') {

@@ -5,6 +5,11 @@ import { sideNav } from '../../assets/nav'
 import "./styles/Navbar.css"
 import logo from '../../assets/logo.png'
 
+const paths = [
+  '/',
+  '/portfolio',
+  '/settings',
+]
 
 const Navbar = () => {
   const location = useLocation()
@@ -45,11 +50,13 @@ const Navbar = () => {
                 <span>{item.title}</span>
               </NavLink>
             ))}
-            <span className="navbar-indicator" ref={indicatorRef}
-              style={{
-                  top: indicatorOffset,
-              }}
-            />
+            {paths.includes(location.pathname) && (
+              <span className="navbar-indicator" ref={indicatorRef}
+                style={{
+                    top: indicatorOffset,
+                }}
+              />
+            )}
           </div>
         </div>
         <div className="navbar-footer">

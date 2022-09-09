@@ -1,27 +1,29 @@
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
 import { shareIcon } from '../assets/icons'
 import { getTotalPortfolioValue } from '../assets/utils'
-import { Box, StockPortfolio, Summary, Total, Alert } from '../components'
+import { Box, StockPortfolio, Holdings, Summary, Total, Alert } from '../components'
+import testStock from '../assets/testStock.json'
 
 
-const Portfolio = () => {
+const SharePortfolio = () => {
   const [alert, setAlert] = useState('')
-  const { portfolio } = useSelector(state => state.local)
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [items, setItems] = useState([]);
   const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
 
   useEffect(() => {
-    if(portfolio.length > 0) {
-      setTotalPortfolioValue(getTotalPortfolioValue(portfolio));
+    if(items.length > 0) {
+      setTotalPortfolioValue(getTotalPortfolioValue(items));
     }
-  }, [portfolio])
+  }, [items])
 
   const listMenuItems = [
     {
       title: "Share",
       icon: shareIcon,
       onClick: () => {
-        const str = '?q=' + portfolio
+        const str = '?q=' + items
         .map(item =>
           item.symbol.toUpperCase() + ":"
         + item.quantity + ":"
@@ -30,8 +32,8 @@ const Portfolio = () => {
         .join(',');
         const domain = window.location.origin;
         const url = domain + "/portfolio/share" + str;
-        navigator.clipboard.writeText(url);
-        setAlert('Copied to clipboard');
+        // navigator.clipboard.writeText(url);
+        // setAlert('Copied to clipboard');
         // Share
         navigator.share({
           title: 'Stocks',
@@ -43,16 +45,42 @@ const Portfolio = () => {
   ]
 
   useEffect(() => {
-    document.title = 'STOKIN - Portfolio';
+    const query = searchParams.get('q');
+    const arr = [];
+    if(query && query.length > 5) {
+      query.split(',').forEach(item => {
+        let stockInfo = item.split(':');
+
+        if(stockInfo) {
+          let stock = testStock.find(i => i.symbol.toUpperCase() === stockInfo[0].toUpperCase());
+          if(stock) {
+            arr.push({
+              ...stock,
+              quantity: stockInfo[1] || '',
+              averagePrice: stockInfo[2] || '',
+            });
+          }
+        } else {
+          return
+        }
+
+      })
+
+      setItems(arr);
+    }
+  }, [searchParams])
+
+  useEffect(() => {
+    document.title = 'STOKIN - Shared Portfolio';
     window.scrollTo(0, 0);
   }, [])
 
   return (
     <div className="content-body">
     {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
-      {portfolio.length > 0 ? (
-        <div className="flex justify-between gap-4 flex-sm-col flex-wrap">
-          <div className="flex-grow-2 order-sm-2">
+      {items.length > 0 ? (
+      <div className="flex justify-between gap-4 flex-sm-col flex-wrap">
+        <div className="flex-grow-2 order-sm-1">
             <Box title="Portfolio" menuItems={listMenuItems} size="lg">
               <div className="flex flex-col justify-between flex-wrap">
                 <div className="flex gap-4 p-3 px-sm-2 border-bottom">
@@ -69,7 +97,7 @@ const Portfolio = () => {
                     Curr
                   </div>
                 </div>
-                {portfolio.map((item, index) => (
+                {items.map((item, index) => (
                   <StockPortfolio
                     key={index}
                     item={item}
@@ -77,25 +105,25 @@ const Portfolio = () => {
                     portfolioValue={totalPortfolioValue}
                     setAlert={setAlert}
                     className={
-                      index+1 === portfolio.length ? 'border-b-r' : 'border-bottom'
+                      index+1 === items.length ? 'border-b-r' : 'border-bottom'
                     }
                   />
                 ))}
               </div>
             </Box>
-          </div>
-          <div className="flex flex-col flex-grow-1 gap-4 order-sm-1 flex-sm-wrap">
-            <div className="flex-grow-1">
-              <h2 className="title-1 px-2 pb-4">
-                Summary
-              </h2>
-              <div className="flex flex-col gap-3 flex-sm-row">
-                <Total portfolio={portfolio}/>
-                <Summary portfolio={portfolio}/>
-              </div>
+        </div>
+        <div className="flex flex-col flex-grow-1 gap-4 order-sm-2 flex-sm-wrap">
+          <div className="flex-grow-1">
+            <h2 className="title-1 px-2 pb-4">
+              Summary
+            </h2>
+            <div className="flex flex-col gap-3 flex-sm-row">
+                <Total portfolio={items}/>
+                <Summary portfolio={items}/>
             </div>
           </div>
         </div>
+      </div>
       ) : (
         <div className="flex flex-col justify-center align-center">
           <h1 className="weight-500 text-center mt-5">
@@ -119,4 +147,4 @@ const Portfolio = () => {
   )
 }
 
-export default Portfolio
+export default SharePortfolio

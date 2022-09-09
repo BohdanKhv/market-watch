@@ -7,7 +7,7 @@ const portfolio = JSON.parse(localStorage.getItem("portfolio"));
 
 const initialState = {
     theme: theme || "light",
-    numberFormat: numberFormat || 'full',
+    numberFormat: numberFormat || 'short',
     favorite: favorite || [],
     portfolio: portfolio || [],
 };
@@ -18,7 +18,7 @@ export const localSlice = createSlice({
     reducers: {
         resetLocal: (state) => {
             state.theme = "light";
-            state.numberFormat = "full";
+            state.numberFormat = "short";
         },
         resetData: (state) => {
             state.favorite = [];

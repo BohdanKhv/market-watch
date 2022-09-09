@@ -5,9 +5,8 @@ const addCommaToNumber = (_number) => {
 const numberFormatter = (_number) => {
     // format 1000 to 1k or 1000000 to 1m etc
     const number = Math.abs(_number);
-    const suffixes = ['', 'K', 'M', 'B', 'T'];
-    const suffixIndex = Math.floor(Math.log10(number) / 3);
-    return `${Math.round(number / Math.pow(10, suffixIndex * 3))}${suffixes[suffixIndex]}`;
+    const formatter = new Intl.NumberFormat('en-US', { notation: 'compact' });
+    return formatter.format(number);
 }
 
 const getTotalPortfolioValue = (portfolio) => {
@@ -72,6 +71,12 @@ const getPercentHoldings = (portfolio) => {
     return result;
 }
 
+const getOneSymbolPercentHoldings = (portfolioValue, quantity, price) => {
+    const result = (+price * +quantity) / portfolioValue * 100;
+    return result.toFixed(2);
+}
+
+
 export {
     addCommaToNumber,
     getTotalInvestment,
@@ -81,5 +86,6 @@ export {
     getTopGain,
     getPnl,
     getPercentagePnl,
-    getPercentHoldings
+    getPercentHoldings,
+    getOneSymbolPercentHoldings
 };

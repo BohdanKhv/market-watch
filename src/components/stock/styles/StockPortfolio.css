@@ -24,11 +24,6 @@
     gap: 6px;
     flex-direction: column;
 }
-.stock-portfolio-name h5 {
-    opacity: .5;
-    font-size: 12px;
-    font-weight: 100;
-}
 .stock-portfolio-card:hover {
     background-color: var(--color-secondary);
 }
@@ -49,12 +44,11 @@
     align-items: center;
 }
 
-.stock-portfolio-price {
-    display: flex;
-    justify-content: space-between;
+.stock-portfolio-detail {
+    display: grid;
+    justify-content: end;
+    text-align: end;
     gap: 6px;
-    flex-direction: column;
-    align-items: flex-end;
 }
 .stock-portfolio-last-price {
     font-weight: 500;

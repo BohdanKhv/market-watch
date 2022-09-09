@@ -2,33 +2,34 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { getTotalPortfolioValue, addCommaToNumber, getTotalInvestment, numberFormatter } from '../../assets/utils'
 
-const Total = ({sharedPortfolio}) => {
+const Total = ({portfolio}) => {
     const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
     const [totalInvested, setTotalInvested] = useState(0);
-    const { portfolio, numberFormat } = useSelector(state => state.local)
-    const items = sharedPortfolio || portfolio || [];
+    const { numberFormat } = useSelector(state => state.local)
 
     useEffect(() => {
-        if(numberFormat === 'full') {
-            setTotalPortfolioValue(addCommaToNumber(getTotalPortfolioValue(items)));
-            setTotalInvested(addCommaToNumber((getTotalInvestment(items))));
-        } else {
-            setTotalPortfolioValue(
-                addCommaToNumber(
-                    numberFormatter(
-                            getTotalPortfolioValue(items)
+        if(portfolio.length > 0) {
+            if(numberFormat === 'full') {
+                setTotalPortfolioValue(addCommaToNumber(getTotalPortfolioValue(portfolio)));
+                setTotalInvested(addCommaToNumber((getTotalInvestment(portfolio))));
+            } else {
+                setTotalPortfolioValue(
+                    addCommaToNumber(
+                        numberFormatter(
+                                getTotalPortfolioValue(portfolio)
+                            )
+                        )
+                );
+                setTotalInvested(
+                    addCommaToNumber(
+                        numberFormatter(
+                            getTotalInvestment(portfolio)
                         )
                     )
-            );
-            setTotalInvested(
-                addCommaToNumber(
-                    numberFormatter(
-                        getTotalInvestment(items)
-                    )
-                )
-            );
+                );
+            }
         }
-    }, [items])
+    }, [portfolio])
 
     return (
         <div className="flex-grow-sm-1 flex-b-50">
@@ -41,7 +42,7 @@ const Total = ({sharedPortfolio}) => {
                         <div className="pt-2 px-1 grid">
                             <div className="w-min-0">
                                 <div className="fs-16 text-ellipsis">
-                                    $ {totalPortfolioValue}
+                                    ${totalPortfolioValue}
                                 </div>
                             </div>
                         </div>
@@ -53,7 +54,7 @@ const Total = ({sharedPortfolio}) => {
                         <div className="pt-2 px-1 grid">
                             <div className="w-min-0">
                                 <div className="fs-16 text-ellipsis">
-                                    $ {totalInvested}
+                                    ${totalInvested}
                                 </div>
                             </div>
                         </div>
@@ -64,7 +65,7 @@ const Total = ({sharedPortfolio}) => {
                         </h4>
                         <div className="flex justify-between align-center pt-2 px-1">
                             <h3 className="weight-400">
-                            {addCommaToNumber(items.reduce((acc, item) => acc + +item.quantity, 0))}
+                            {addCommaToNumber(portfolio?.reduce((acc, item) => acc + +item.quantity, 0))}
                             </h3>
                         </div>
                     </div>

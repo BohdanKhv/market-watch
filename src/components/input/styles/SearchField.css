@@ -2,6 +2,7 @@
     max-width: 770px;
     width: 100%;
     position: relative;
+    pointer-events: inherit;
 }
 
 .search-results {
