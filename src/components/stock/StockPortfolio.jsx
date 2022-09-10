@@ -77,7 +77,7 @@ const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
                 data-menu-index={index+1}
                 onClick={() => setOpen(!open)}>
                 <div className="stock-portfolio-info gap-1">
-                    <div className="flex flex-grow-1 gap-1">
+                    <div className="flex flex-grow-1 gap-2">
                         <div className="stock-portfolio-logo">
                             <Avatar
                                 image={item.logo}

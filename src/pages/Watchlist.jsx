@@ -21,7 +21,7 @@ const ShareWatchlist = () => {
         // Share
         navigator.share({
           title: 'Stocks',
-          text: 'Check out my watchlist',
+          // text: 'Check out my watchlist',
           url: url,
         });
       }

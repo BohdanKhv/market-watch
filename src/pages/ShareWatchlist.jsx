@@ -24,7 +24,7 @@ const ShareWatchlist = () => {
         // Share
         navigator.share({
           title: 'Stocks',
-          text: 'Check out my watchlist',
+          // text: 'Check out my watchlist',
           url: url,
         });
       }
@@ -62,7 +62,7 @@ const ShareWatchlist = () => {
       {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
       {items.length > 0 ? (
       <div className="flex justify-between gap-4 flex-sm-col">
-        <div className="flex-grow-2 order-sm-1">
+        <div className="flex-grow-2 order-sm-2">
           <Box title="Watchlist" secondary="Shared" menuItems={watchlistMenuItems} size="lg">
             <div className="flex flex-col">
               {items.map((item, index) => (
@@ -82,7 +82,7 @@ const ShareWatchlist = () => {
           </Box>
         </div>
         {items.length > 4 && (
-          <div className="flex flex-col flex-grow-1 gap-4 order-sm-2">
+          <div className="flex flex-col flex-grow-1 gap-4 order-sm-1">
             <Box title="Performance" size="lg">
               <div className="flex flex-col flex-sm-row">
                 <div className="flex-grow-1">

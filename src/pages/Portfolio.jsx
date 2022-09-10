@@ -35,7 +35,7 @@ const Portfolio = () => {
         // Share
         navigator.share({
           title: 'Stocks',
-          text: 'Check out my portfolio',
+          // text: 'Check out my portfolio',
           url: url,
         });
       }

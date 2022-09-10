@@ -37,7 +37,7 @@ const SharePortfolio = () => {
         // Share
         navigator.share({
           title: 'Stocks',
-          text: 'Check out my portfolio',
+          // text: 'Check out my portfolio',
           url: url,
         });
       }
@@ -80,7 +80,7 @@ const SharePortfolio = () => {
     {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
       {items.length > 0 ? (
       <div className="flex justify-between gap-4 flex-sm-col flex-wrap">
-        <div className="flex-grow-2 order-sm-1">
+        <div className="flex-grow-2 order-sm-2">
             <Box title="Portfolio" menuItems={listMenuItems} size="lg">
               <div className="flex flex-col justify-between flex-wrap">
                 <div className="flex gap-4 p-3 px-sm-2 border-bottom">
@@ -112,7 +112,7 @@ const SharePortfolio = () => {
               </div>
             </Box>
         </div>
-        <div className="flex flex-col flex-grow-1 gap-4 order-sm-2 flex-sm-wrap">
+        <div className="flex flex-col flex-grow-1 gap-4 order-sm-1 flex-sm-wrap">
           <div className="flex-grow-1">
             <h2 className="title-1 px-2 pb-4">
               Summary
