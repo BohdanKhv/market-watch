@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, UpdatePortfolio, AddToPortfolio, Avatar } from '../';
 import { removeFromFavorite, addToFavorite } from '../../features/local/localSlice';
-import { starEmptyIcon, starFillIcon, walletFillIcon, walletIcon } from '../../assets/icons';
+import { starEmptyIcon, starFillIcon, walletFillIcon, walletIcon, chartIcon } from '../../assets/icons';
 import './styles/StockListItem.css'
 
 const StockListItem = ({item, index, className, setAlert}) => {
@@ -12,6 +13,8 @@ const StockListItem = ({item, index, className, setAlert}) => {
     const exist = useSelector(state => state.local.portfolio).filter(i => i.symbol === item.symbol)[0];
     const favorite = useSelector(state => state.local.favorite).filter(i => i.symbol === item.symbol)[0];
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     return (
         <div
@@ -39,6 +42,17 @@ const StockListItem = ({item, index, className, setAlert}) => {
                     setOpen={setOpen}
                     index={index+1}
                 >
+                    {location.pathname === '/' && (
+                        <div className="menu-item"
+                            onClick={() => {
+                                setOpen(false);
+                                navigate(`/chart/${item.symbol}`);
+                            }}
+                        >
+                            <span className="menu-item-icon">{chartIcon}</span>
+                            Chart
+                        </div>
+                    )}
                     {exist ? (
                         <div className="menu-item"
                             onClick={() => {

@@ -13,7 +13,7 @@ const getTotalPortfolioValue = (portfolio) => {
     const result = portfolio.reduce((acc, curr) => {
         return acc + curr.price * curr.quantity;
     }, 0);
-    return result;
+    return result.toFixed(0);
 }
 
 const getTotalInvestment = (portfolio) => {

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Navbar, Header } from "./components";
-import { Watchlist, Portfolio, Settings, ShareWatchlist, SharePortfolio, About } from "./pages";
+import { Watchlist, Portfolio, Settings, ShareWatchlist, SharePortfolio, About, Chart } from "./pages";
 
 function App() {
   const theme = useSelector((state) => state.local.theme);
@@ -25,6 +25,7 @@ function App() {
           <Route path="/watchlist/share" element={<ShareWatchlist />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio/share" element={<SharePortfolio />} />
+          <Route path="/chart/:symbol" element={<Chart />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/about" element={<About />} />
         </Routes>

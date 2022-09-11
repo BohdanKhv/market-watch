@@ -15,6 +15,7 @@ import UpdatePortfolio from "./stock/UpdatePortfolio";
 import Holdings from "./stock/Holdings";
 import Summary from "./stock/Summary";
 import Total from "./stock/Total";
+import ChartView from "./stock/ChartView";
 
 import Input from "./input/Input";
 import SearchField from "./input/SearchField";
@@ -37,6 +38,7 @@ export {
     Holdings,
     Summary,
     Total,
+    ChartView,
 
     Input,
     SearchField

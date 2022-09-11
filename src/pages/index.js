@@ -4,6 +4,7 @@ import Portfolio from './Portfolio';
 import SharePortfolio from './SharePortfolio';
 import Settings from './Settings';
 import About from './About';
+import Chart from './Chart';
 
 export {
     Watchlist,
@@ -11,5 +12,6 @@ export {
     Portfolio,
     SharePortfolio,
     Settings,
-    About
+    About,
+    Chart
 }
