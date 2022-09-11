@@ -42,7 +42,7 @@ const StockListItem = ({item, index, className, setAlert}) => {
                     setOpen={setOpen}
                     index={index+1}
                 >
-                    {location.pathname === '/' && (
+                    {!location.pathname.split('/').includes('chart') && (
                         <div className="menu-item"
                             onClick={() => {
                                 setOpen(false);

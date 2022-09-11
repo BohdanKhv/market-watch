@@ -1,6 +1,8 @@
 import { useEffect } from "react"
+import { useSelector } from "react-redux";
 
 const ChartView = ({symbol}) => {
+    const theme = useSelector(state => state.local.theme);
 
     useEffect(() => {
         // add widget
@@ -12,7 +14,7 @@ const ChartView = ({symbol}) => {
             "autosize": true,
             "symbol": "NASDAQ:${symbol || 'AAPL'}",
             "timezone": "Etc/UTC",
-            "theme": "dark",
+            "theme": "${theme === 'dark' ? 'dark' : 'light'}",
             "style": "2",
             "locale": "en",
             "toolbar_bg": "#f1f3f6",
@@ -30,7 +32,7 @@ const ChartView = ({symbol}) => {
     }, [])
 
     return (
-        <div className="py-3" style={{minHeight: '400px', height: '400px'}}>
+        <div className="pt-3 pb-5 mb-5" style={{minHeight: '400px', height: '400px'}}>
             <div class="tradingview-widget-container" style={{minHeight: '400px', height: '400px'}}>
                 <div id="tradingview_00b9b" style={{minHeight: '400px', height: '400px'}}></div>
                 <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">{symbol || 'AAPL'} Chart</span></a> by TradingView</div>
