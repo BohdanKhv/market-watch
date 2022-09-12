@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { SearchField } from '../'
 import './styles/Header.css'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/img/logo.png'
 
 const Header = () => {
     const [searchFocused, setSearchFocused] = useState(false);

@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { shareIcon, trashIcon } from '../assets/icons'
+import { shareIcon } from '../assets/img/icons'
 import { Box, StockListItem, PopularStock, Alert } from '../components'
-import testStock from '../assets/testStock.json'
+import stocks from '../assets/data/stocks.json'
 
 
 const ShareWatchlist = () => {
@@ -37,7 +36,7 @@ const ShareWatchlist = () => {
     if(query && query.length > 0) {
       query.split(',').forEach(item => {
         if(item) {
-          let stock = testStock.find(i => i.symbol.toUpperCase() === item.toUpperCase());
+          let stock = stocks.find(i => i.symbol.toUpperCase() === item.toUpperCase());
           if(stock) {
             items.push({
               ...stock

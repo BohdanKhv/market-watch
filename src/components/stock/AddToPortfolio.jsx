@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { Modal, Input } from '../'
-import { walletIcon } from "../../assets/icons"
 import { addToPortfolio } from "../../features/local/localSlice"
 
 const AddToPortfolio = ({open, setOpen, item, setAlert}) => {
@@ -27,12 +26,12 @@ const AddToPortfolio = ({open, setOpen, item, setAlert}) => {
             setModalIsOpen={setOpen}
             contentLabel={`${item ? item.symbol : ''}`}
             actionBtnText="Add"
-            onSubmit={handleAddToPortfolio}
+            onSubmit={averagePrice > 0 && quantity > 0 ? handleAddToPortfolio : null}
             actionDangerBtnText="Cancel"
+            disableClose={averagePrice > 0 && quantity > 0 ? true : false}
             onSubmitDanger={() => {
                 setOpen(false);
             }}
-            disableClose={false}
         >
             <div className="flex flex-col gap-4">
                 <div>

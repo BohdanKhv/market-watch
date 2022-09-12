@@ -45,7 +45,7 @@ const Avatar = ({image, name, size}) => {
         />
         :
         name?.length === 1 ? name.toUpperCase() :
-        name?.length > 1 ? name?.slice(0, 2).toUpperCase() :
+        name?.length > 1 ? name?.slice(0, 1).toUpperCase() :
         'AV'
       }
     </div>

@@ -1,12 +1,4 @@
 :root {
-  --color-main: #ffffff;
-  --color-secondary: #f6f7f8;
-  --color-tertiary: #f0f0f0;
-  --color-primary: #03c4f0;
-  --color-border: #2E2E3B;
-
-  --text-light: #ffffff;
-  --text-dark: #2E2E3B;
   --box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
   --box-shadow-sm: 0 10px 20px rgb(0 0 0 / 5%);
 
@@ -50,7 +42,7 @@
   --text-light: #ffffff;
   --text-dark: #2E2E3B;
 
-  --transition-duration: .3s;
+  --transition-duration: .15s;
 }
 
 * {

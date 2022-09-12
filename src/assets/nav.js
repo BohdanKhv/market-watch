@@ -1,4 +1,4 @@
-import { homeIcon, userIcon, walletIcon, searchIcon, gridIcon, homeFillIcon, starEmptyIcon, starFillIcon, walletFillIcon, settingsIcon, marketIcon, marketFillIcon, settingsFillIcon } from "./icons"
+import { homeIcon, userIcon, walletIcon, searchIcon, gridIcon, homeFillIcon, starEmptyIcon, starFillIcon, walletFillIcon, settingsIcon, marketIcon, marketFillIcon, settingsFillIcon } from "./img/icons"
 
 const sideNav = [
     {

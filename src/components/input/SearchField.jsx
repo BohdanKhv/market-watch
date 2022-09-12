@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { searchIcon } from '../../assets/icons';
-import testStock from '../../assets/testStock.json';
-import { Input, StockListItem } from '../';
+import { searchIcon } from '../../assets/img/icons';
+import stocks from '../../assets/data/stocks.json';
+import { Input, StockSearch, Alert } from '../';
 import './styles/SearchField.css';
 
 
 const SearchField = ({setSearchFocused}) => {
+    const [alert, setAlert] = useState('')
     const [isOpen, setIsOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const searchListRef = useRef(null);
@@ -26,17 +27,6 @@ const SearchField = ({setSearchFocused}) => {
             document.removeEventListener('mouseup', handleClickOutside);
         };
     }, [searchListRef]);
-
-    useEffect(() => {
-        let promise = null;
-        if (searchQuery.length > 0) {
-            // console.log('searchQuery', searchQuery);
-        }
-
-        return () => {
-            promise && promise.abort();
-        }
-    }, [searchQuery]);
 
     useEffect(() => {
         if (isOpen) {
@@ -84,26 +74,38 @@ const SearchField = ({setSearchFocused}) => {
                     className="search-list"
                     ref={searchListRef}
                 >
-                    {testStock.filter(i => {
+                    {stocks.filter(i => {
                         if (searchQuery === '') {
                             return i;
-                        } else if (i.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+                        } else if (i.name?.toLowerCase().includes(searchQuery?.toLowerCase())) {
                             return i;
-                        } else if (i.symbol.toLowerCase().includes(searchQuery.toLowerCase())) {
+                        } else if (i.symbol?.toLowerCase().includes(searchQuery?.toLowerCase())) {
                             return i;
                         }
-                    }
-                    ).map((item, index) => (
-                        <StockListItem
+                    })
+                    .slice(0, 10)
+                    .sort((a, b) => {
+                        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                            return -1;
+                        }
+                        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                            return 1;
+                        }
+                        return 0;
+                    })
+                    .map((item, index) => (
+                        <StockSearch
                             key={index}
                             item={item}
                             index={index}
                             menuItems={[]}
-                            className={index + 1 !== testStock.length ? 'border-bottom' : ''}
+                            setAlert={setAlert}
+                            className={index + 1 !== stocks.length ? 'border-bottom' : ''}
                         />
                     ))}
                 </div>
             </div>
+        {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
         </div>
     )
 }

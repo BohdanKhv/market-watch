@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Menu, UpdatePortfolio, Avatar } from '../';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { addCommaToNumber, numberFormatter, getOneSymbolPercentHoldings } from '../../assets/utils';
-import { starEmptyIcon, starFillIcon, trashIcon, walletFillIcon } from '../../assets/icons';
+import { chartIcon, starEmptyIcon, starFillIcon, trashIcon, walletFillIcon } from '../../assets/img/icons';
 import { removeFromPortfolio, removeFromFavorite, addToFavorite } from '../../features/local/localSlice';
+import { Menu, UpdatePortfolio, Avatar } from '../';
 import './styles/StockPortfolio.css'
 
 const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
@@ -12,6 +13,8 @@ const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
     const numberFormat = useSelector(state => state.local.numberFormat);
     const favorite = useSelector(state => state.local.favorite).filter(i => i.symbol === item.symbol)[0];
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const format = (n) => {
         if(numberFormat === 'full') {
@@ -32,6 +35,17 @@ const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
         />
         {open &&
             <Menu open={open} setOpen={setOpen} index={index+1}>
+                {!location.pathname.split('/').includes('chart') && (
+                    <div className="menu-item"
+                        onClick={() => {
+                            setOpen(false);
+                            navigate(`/chart/${item.symbol}`);
+                        }}
+                    >
+                        <span className="menu-item-icon">{chartIcon}</span>
+                        Chart
+                    </div>
+                )}
                 <div className="menu-item"
                     onClick={() => {
                         setOpenUpdateToPortfolio(true);
@@ -80,7 +94,11 @@ const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
                     <div className="flex flex-grow-1 gap-2">
                         <div className="stock-portfolio-logo">
                             <Avatar
-                                image={item.logo}
+                                image={
+                                    "https://stocks-logo.s3.us-east-2.amazonaws.com/logos/" +
+                                    item.symbol?.replace('^', '-').replace('/', '').replace('\\', '') + 
+                                    "-sm.svg"
+                                }
                                 name={item.symbol}
                                 size="full"
                             />
@@ -98,7 +116,7 @@ const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
                                 {format(item.quantity)}
                             </span>
                             <div className="fs-10 text-ellipsis text-end">
-                                <span className="text-secondary">{(+getOneSymbolPercentHoldings(portfolioValue, item.quantity, item.price))?.toFixed(1)}%</span>
+                                <span className="text-secondary">{item.price ? (+getOneSymbolPercentHoldings(portfolioValue, item.quantity, item.price))?.toFixed(1) : '0.00'}%</span>
                             </div>
                         </div>
                         <div className="stock-portfolio-detail mw-50-px">
@@ -111,10 +129,10 @@ const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
                         </div>
                         <div className="stock-portfolio-detail mw-50-px">
                             <span className={`${+item.price > +item.averagePrice ? 'text-success' : +item.price < +item.averagePrice ? 'text-danger' : 'text-secondary'}`}>
-                                {(+item.price)?.toFixed(1)}
+                                {item.price ? (+item.price)?.toFixed(1) : '0.00'}
                             </span>
                             <div className="fs-10 text-ellipsis text-end text-secondary">
-                                ${format((+item.price * +item.quantity)?.toFixed(1))}
+                                ${item.price ? format((+item.price * +item.quantity)?.toFixed(1)) : '0.00'}
                             </div>
                         </div>
                     </div>

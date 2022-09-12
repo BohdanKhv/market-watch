@@ -7,9 +7,17 @@ const PopularStock = ({item, className, menuItems}) => {
         <div className={`popular-stock-card${className ? ` ${className}` : ''}`}>
             <div className="popular-stock-header align-center gap-3 flex-wrap">
                 <div className="popular-stock-logo">
-                    <Avatar image={item.logo} size="full" name={item.symbol} />
+                    <Avatar 
+                        image={
+                            "https://stocks-logo.s3.us-east-2.amazonaws.com/logos/" +
+                            item.symbol.replace('^', '-').replace('/', '').replace('\\', '') + 
+                            "-sm.svg"
+                        }
+                        size="full"
+                        name={item.symbol}
+                    />
                 </div>
-                <div className="flex flex-col align-end gap-2 flex-grow-1">
+                <div className="flex flex-col align-end gap-2 flex-grow-1 justify-between">
                     <div className="fs-14 flex flex-col align-end text-end">
                         <h3>{item.symbol}</h3>
                         {/* <h5 className="text-secondary">
@@ -17,11 +25,11 @@ const PopularStock = ({item, className, menuItems}) => {
                         </h5> */}
                     </div>
                     <span className="fs-12">
-                        {item.price.toString().replace('-', '')}
+                        {item.price ? item.price.toString().replace('-', '') : '0.00'}
                     </span>
-                    <span className={`${+item.priceChange > 0 ? "text-success" : +item.priceChange < 0 ? 'text-danger' : 'text-secondary'}`}>
+                    {/* <span className={`${+item.priceChange > 0 ? "text-success" : +item.priceChange < 0 ? 'text-danger' : 'text-secondary'}`}>
                         {+item.priceChange > 0 ? "+" : +item.priceChange < 0 ? '-' : ''}{item.priceChange?.replace('-', '')}
-                    </span>
+                    </span> */}
                 </div>
             </div>
         </div>

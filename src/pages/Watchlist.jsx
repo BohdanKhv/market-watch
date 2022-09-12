@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { shareIcon } from '../assets/icons'
+import { shareIcon } from '../assets/img/icons'
 import { updateFavoritePrice } from '../features/local/localSlice'
 import { Box, StockListItem, PopularStock, Alert } from '../components'
 import socket from '../socket'

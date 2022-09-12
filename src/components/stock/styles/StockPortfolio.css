@@ -21,7 +21,7 @@
 }
 .stock-portfolio-name {
     display: flex;
-    gap: 6px;
+    gap: 0.25rem;
     flex-direction: column;
 }
 .stock-portfolio-card:hover {

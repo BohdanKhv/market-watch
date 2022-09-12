@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { infoIcon, moneyIcon, moonIcon, rightArrowIcon, sunIcon, trashIcon } from '../assets/icons'
+import { infoIcon, moneyIcon, moonIcon, rightArrowIcon, sunIcon, trashIcon } from '../assets/img/icons'
 import { Box, Modal } from '../components'
 import { setTheme, resetData, setNumberFormat } from '../features/local/localSlice'
 

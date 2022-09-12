@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Menu } from '../';
-import { moreIcon } from '../../assets/icons';
+import { moreIcon } from '../../assets/img/icons';
 import './styles/Box.css'
 
 const Box = ({children, title, menuItems, size, secondary}) => {

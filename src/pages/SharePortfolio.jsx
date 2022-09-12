@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { shareIcon } from '../assets/icons'
+import { shareIcon } from '../assets/img/icons'
 import { getTotalPortfolioValue } from '../assets/utils'
-import { Box, StockPortfolio, Holdings, Summary, Total, Alert } from '../components'
-import testStock from '../assets/testStock.json'
+import { Box, StockPortfolio, Summary, Total, Alert } from '../components'
+import stocks from '../assets/data/stocks.json'
 
 
 const SharePortfolio = () => {
@@ -52,7 +52,7 @@ const SharePortfolio = () => {
         let stockInfo = item.split(':');
 
         if(stockInfo) {
-          let stock = testStock.find(i => i.symbol.toUpperCase() === stockInfo[0].toUpperCase());
+          let stock = stocks.find(i => i.symbol.toUpperCase() === stockInfo[0].toUpperCase());
           if(stock) {
             arr.push({
               ...stock,

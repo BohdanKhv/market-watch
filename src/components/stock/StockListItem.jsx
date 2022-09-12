@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, UpdatePortfolio, AddToPortfolio, Avatar } from '../';
 import { removeFromFavorite, addToFavorite } from '../../features/local/localSlice';
-import { starEmptyIcon, starFillIcon, walletFillIcon, walletIcon, chartIcon } from '../../assets/icons';
+import { starEmptyIcon, starFillIcon, walletFillIcon, walletIcon, chartIcon } from '../../assets/img/icons';
 import './styles/StockListItem.css'
 
 const StockListItem = ({item, index, className, setAlert}) => {
@@ -100,7 +100,11 @@ const StockListItem = ({item, index, className, setAlert}) => {
             )}
             <div className="list-item-logo">
                 <Avatar
-                    image={item.logo}
+                    image={
+                        "https://stocks-logo.s3.us-east-2.amazonaws.com/logos/" +
+                        item.symbol.replace('^', '-').replace('/', '').replace('\\', '') + 
+                        "-sm.svg"
+                    }
                     name={item.symbol}
                     size="full"
                 />
@@ -111,7 +115,7 @@ const StockListItem = ({item, index, className, setAlert}) => {
             </div>
             <div className="list-item-price">
                 <div className="list-item-last-price">{item.price}</div>
-                <div className={`list-item-change${item.priceChange > 0 ? ' list-item-last-change-positive' : item.priceChange < 0 ? ' list-item-last-change-negative' : ''}`}>{item.priceChange > 0 && '+'}{item.priceChange}</div>
+                {/* <div className={`list-item-change${item.priceChange > 0 ? ' list-item-last-change-positive' : item.priceChange < 0 ? ' list-item-last-change-negative' : ''}`}>{item.priceChange > 0 && '+'}{item.priceChange}</div> */}
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { closeIcon, spinnerIcon } from '../../assets/icons';
+import { closeIcon, spinnerIcon } from '../../assets/img/icons';
 import './styles/Modal.css';
 
 const Modal = ({children, bodyStyles, headerNone, style, modalIsOpen, contentLabel, setModalIsOpen, actionBtnText, onSubmit, actionDangerBtnText, onSubmitDanger, disableClose, isLoading, notCloseOnUpdate, isError, errMsg, isScroll, onClose}) => {

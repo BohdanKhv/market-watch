@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { Modal, Input } from '../'
 import { updateFromPortfolio } from "../../features/local/localSlice"
+import { Modal, Input } from '../'
 
 const UpdatePortfolio = ({open, setOpen, item, setAlert}) => {
     const [quantity, setQuantity] = useState(item.quantity)

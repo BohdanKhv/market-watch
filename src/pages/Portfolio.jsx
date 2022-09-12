@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { shareIcon } from '../assets/icons'
 import { getTotalPortfolioValue } from '../assets/utils'
 import { updatePortfolioPrice } from '../features/local/localSlice'
 import { Box, StockPortfolio, Summary, Total, Alert } from '../components'
+import { shareIcon } from '../assets/img/icons'
 import socket from '../socket'
 
 
