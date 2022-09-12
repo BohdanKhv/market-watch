@@ -9,9 +9,12 @@ const PopularStock = ({item, className, menuItems}) => {
                 <div className="popular-stock-logo">
                     <Avatar 
                         image={
+                            item.logo ?
                             "https://stocks-logo.s3.us-east-2.amazonaws.com/logos/" +
-                            item.symbol.replace('^', '-').replace('/', '').replace('\\', '') + 
+                            item.logo + 
                             "-sm.svg"
+                            :
+                            null
                         }
                         size="full"
                         name={item.symbol}

@@ -95,9 +95,12 @@ const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
                         <div className="stock-portfolio-logo">
                             <Avatar
                                 image={
+                                    item.logo ?
                                     "https://stocks-logo.s3.us-east-2.amazonaws.com/logos/" +
-                                    item.symbol?.replace('^', '-').replace('/', '').replace('\\', '') + 
+                                    item.logo + 
                                     "-sm.svg"
+                                    :
+                                    null
                                 }
                                 name={item.symbol}
                                 size="full"

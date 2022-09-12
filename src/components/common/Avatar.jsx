@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import './styles/Avatar.css'
+import axios from 'axios';
 
 const Avatar = ({image, name, size}) => {
   const [loading, setLoading] = useState(true);
@@ -7,6 +8,7 @@ const Avatar = ({image, name, size}) => {
   const imageRef = useRef(null);
 
   useEffect(() => {
+
     if (imageRef.current) {
         imageRef.current.addEventListener("load", () => {
             setLoading(true);
@@ -33,7 +35,7 @@ const Avatar = ({image, name, size}) => {
     <div 
       className={`avatar${size ? ` avatar-${size}` : ''}`}
     >
-      { image && !imageErr ?
+      { image ?
         <img
           className={`${loading ? '' : ' avatar-loading'}`}
           ref={imageRef}
@@ -41,11 +43,11 @@ const Avatar = ({image, name, size}) => {
           alt={name} 
           decoding="async"
           loading="lazy"
-          onError={() => setImageErr(true)}
+          // onError={() => setImageErr(true)}
         />
         :
         name?.length === 1 ? name.toUpperCase() :
-        name?.length > 1 ? name?.slice(0, 1).toUpperCase() :
+        name?.length > 1 ? name?.slice(0, 2).toUpperCase() :
         'AV'
       }
     </div>
