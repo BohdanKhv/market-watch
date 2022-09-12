@@ -49,6 +49,19 @@ export const localSlice = createSlice({
             );
             localStorage.setItem("favorite", JSON.stringify(state.favorite));
         },
+        updateFavoritePrice: (state, action) => {
+            if(action.payload.data && action.payload.data.length > 0) {
+                action.payload.data.forEach((item) => {
+                    state.favorite = state.favorite.map((favoriteItem) => {
+                        if (favoriteItem.symbol === item.s) {
+                            favoriteItem.price = item.p;
+                        }
+                        return favoriteItem;
+                    });
+                });
+                localStorage.setItem("favorite", JSON.stringify(state.favorite));
+            }
+        },
         addToPortfolio: (state, action) => {
             const index = state.portfolio.findIndex(
                 (item) => item.symbol === action.payload.symbol
@@ -72,8 +85,21 @@ export const localSlice = createSlice({
                 return item;
             });
             localStorage.setItem("portfolio", JSON.stringify(state.portfolio));
+        },
+        updatePortfolioPrice: (state, action) => {
+            if(action.payload.data && action.payload.data.length > 0) {
+                action.payload.data.forEach((item) => {
+                    state.portfolio = state.portfolio.map((portfolioItem) => {
+                        if (portfolioItem.symbol === item.s) {
+                            portfolioItem.price = item.p;
+                        }
+                        return portfolioItem;
+                    });
+                });
+                localStorage.setItem("portfolio", JSON.stringify(state.portfolio));
+            }
         }
-    },
+    }
 });
 
 export const {
@@ -83,8 +109,10 @@ export const {
     setNumberFormat,
     addToFavorite,
     removeFromFavorite,
+    updateFavoritePrice,
     addToPortfolio,
     removeFromPortfolio,
-    updateFromPortfolio
+    updateFromPortfolio,
+    updatePortfolioPrice
 } = localSlice.actions;
 export default localSlice.reducer;

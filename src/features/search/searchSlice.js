@@ -1,17 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import stockService from "./stockService";
+import searchService from "./searchService";
 
 const initialState = {
-    globalQuote: [],
+    searchResults: [],
     loading: false,
 };
 
-
-export const getGlobalQuote = createAsyncThunk(
-    "stock/getGlobalQuote",
-    async (symbol, thunkAPI) => {
+export const search = createAsyncThunk(
+    "search/getSearchResults",
+    async (query, thunkAPI) => {
         try {
-            return await stockService.getGlobalQuote(symbol);
+            return await searchService.search(query);
         } catch (error) {
             const message =
                 (error.response &&
@@ -25,31 +24,32 @@ export const getGlobalQuote = createAsyncThunk(
 );
 
 
-const stockSlice = createSlice({
-    name: "stock",
+
+const searchSlice = createSlice({
+    name: "search",
     initialState,
     reducers: {
-        resetStock: (state) => {
-            state.globalQuote = [];
+        resetSearch: (state) => {
+            state.searchResults = [];
             state.loading = false;
         }
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getGlobalQuote.pending, (state) => {
+            .addCase(search.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(getGlobalQuote.fulfilled, (state, action) => {
+            .addCase(search.fulfilled, (state, action) => {
                 state.loading = false;
-                state.globalQuote.push(action.payload);
+                state.searchResults = action.payload.bestMatches ? action.payload.bestMatches : [];
             })
-            .addCase(getGlobalQuote.rejected, (state) => {
+            .addCase(search.rejected, (state) => {
                 state.loading = false;
             });
     }
 });
 
 
-export const { resetStock } = stockSlice.actions;
+export const { resetSearch } = searchSlice.actions;
 
-export default stockSlice.reducer;
+export default searchSlice.reducer;

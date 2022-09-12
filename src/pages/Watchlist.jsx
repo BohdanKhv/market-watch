@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { shareIcon } from '../assets/icons'
+import { updateFavoritePrice } from '../features/local/localSlice'
 import { Box, StockListItem, PopularStock, Alert } from '../components'
+import socket from '../socket'
 
 
 const ShareWatchlist = () => {
   const [alert, setAlert] = useState('');
   const { favorite } = useSelector(state => state.local);
+  const dispatch = useDispatch();
 
   const watchlistMenuItems = [
     {
@@ -32,6 +35,33 @@ const ShareWatchlist = () => {
     document.title = 'STOKIN - Watchlist';
     window.scrollTo(0, 0);
   }, [])
+
+  useEffect(() => {
+    // Open connection
+    socket.addEventListener('open', function (event) {
+      favorite.forEach(stock => {
+        socket.readyState === 1 && socket.send(JSON.stringify({'type':'subscribe', 'symbol': stock.symbol}))
+      })
+    });
+
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+      if(event.data) {
+        dispatch(updateFavoritePrice(JSON.parse(event.data)))
+      }
+    });
+
+    // Unsubscribe
+    var unsubscribe = function(symbol) {
+      socket.readyState === 1 && socket.send(JSON.stringify({'type':'unsubscribe','symbol': symbol}))
+    }
+
+    return () => {
+      socket.readyState === 1 && unsubscribe && favorite.forEach(stock => {
+        unsubscribe(stock.symbol)
+      })
+    }
+  }, [favorite])
 
   return (
     <div className="content-body">

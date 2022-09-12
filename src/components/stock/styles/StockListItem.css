@@ -21,6 +21,7 @@
     overflow: hidden;
     width: 35px;
     height: 35px;
+    min-width: 35px;
 }
 .list-item-logo img {
     width: 100%;

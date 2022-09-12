@@ -1,18 +1,46 @@
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { shareIcon } from '../assets/icons'
 import { getTotalPortfolioValue } from '../assets/utils'
+import { updatePortfolioPrice } from '../features/local/localSlice'
 import { Box, StockPortfolio, Summary, Total, Alert } from '../components'
+import socket from '../socket'
 
 
 const Portfolio = () => {
   const [alert, setAlert] = useState('')
   const { portfolio } = useSelector(state => state.local)
   const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if(portfolio.length > 0) {
       setTotalPortfolioValue(getTotalPortfolioValue(portfolio));
+    }
+
+    // Open connection
+    socket.addEventListener('open', function (event) {
+      portfolio.forEach(stock => {
+        socket.readyState === 1 && socket.send(JSON.stringify({'type':'subscribe', 'symbol': stock.symbol}))
+      })
+    });
+
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+      if(event.data) {
+        dispatch(updatePortfolioPrice(JSON.parse(event.data)))
+      }
+    });
+
+    // Unsubscribe
+    var unsubscribe = function(symbol) {
+      socket.readyState === 1 && socket.send(JSON.stringify({'type':'unsubscribe','symbol': symbol}))
+    }
+
+    return () => {
+      socket.readyState === 1 && unsubscribe && portfolio.forEach(stock => {
+        unsubscribe(stock.symbol)
+      })
     }
   }, [portfolio])
 

@@ -1,16 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { searchIcon } from '../../assets/icons';
 import testStock from '../../assets/testStock.json';
-import { Input, StockListItem } from '../';
+import { search, resetSearch } from '../../features/search/searchSlice';
+import { Input, StockSearch } from '../';
 import './styles/SearchField.css';
 
 
 const SearchField = ({setSearchFocused}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const searchListRef = useRef(null);
+    const { searchResults, loading } = useSelector(state => state.search);
     const { pathname } = useLocation();
+    const searchListRef = useRef(null);
+    const dispatch = useDispatch();
 
     const handleClickOutside = (event) => {
         if (searchListRef.current && !searchListRef.current.contains(event.target)) {
@@ -30,7 +34,7 @@ const SearchField = ({setSearchFocused}) => {
     useEffect(() => {
         let promise = null;
         if (searchQuery.length > 0) {
-            // console.log('searchQuery', searchQuery);
+            promise = dispatch(search(searchQuery));
         }
 
         return () => {
@@ -84,17 +88,8 @@ const SearchField = ({setSearchFocused}) => {
                     className="search-list"
                     ref={searchListRef}
                 >
-                    {testStock.filter(i => {
-                        if (searchQuery === '') {
-                            return i;
-                        } else if (i.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-                            return i;
-                        } else if (i.symbol.toLowerCase().includes(searchQuery.toLowerCase())) {
-                            return i;
-                        }
-                    }
-                    ).map((item, index) => (
-                        <StockListItem
+                    {searchResults.map((item, index) => (
+                        <StockSearch
                             key={index}
                             item={item}
                             index={index}
