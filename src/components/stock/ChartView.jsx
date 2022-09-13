@@ -10,7 +10,6 @@ const ChartView = ({symbol}) => {
         const stock = stocks.find(i => i.symbol.toLowerCase() === symbol.toLowerCase());
         const other = stocks.filter(i => favorite.includes(i.symbol.toLowerCase()) && i.symbol.toLowerCase() !== symbol.toLowerCase());
         // add widget
-        console.log(stock)
         const script = document.createElement('script');
         script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
         script.async = true;
@@ -54,7 +53,6 @@ const ChartView = ({symbol}) => {
         }
         `;
         document.querySelector('.trandingview-widget').appendChild(script);
-
     }, [])
 
     return (

@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
 import './styles/Avatar.css'
-import axios from 'axios';
 
 const Avatar = ({image, name, size}) => {
   const [loading, setLoading] = useState(true);

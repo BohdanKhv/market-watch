@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getGlobalQuote } from '../stock/stockSlice';
 
 const theme = localStorage.getItem("theme");
 const numberFormat = localStorage.getItem("numberFormat");
@@ -98,7 +99,37 @@ export const localSlice = createSlice({
                 });
                 localStorage.setItem("portfolio", JSON.stringify(state.portfolio));
             }
-        }
+        },
+    }, extraReducers: (builder) => {
+        builder.addCase(getGlobalQuote.fulfilled, (state, action) => {
+            if(action.payload) {
+                let item = action.payload;
+                state.favorite = state.favorite.map((favoriteItem) => {
+                    if (favoriteItem.symbol.toLowerCase() === item.symbol.toLowerCase()) {
+                        favoriteItem.price = item.c;
+                        favoriteItem.change = item.d;
+                        favoriteItem.changePercent = item.dp;
+                        favoriteItem.open = item.o;
+                        favoriteItem.high = item.h;
+                        favoriteItem.low = item.l;
+                    }
+                    return favoriteItem;
+                });
+                state.portfolio = state.portfolio.map((portfolioItem) => {
+                    if (portfolioItem.symbol.toLowerCase() === item.symbol.toLowerCase()) {
+                        portfolioItem.price = item.c;
+                        portfolioItem.change = item.d;
+                        portfolioItem.changePercent = item.dp;
+                        portfolioItem.open = item.o;
+                        portfolioItem.high = item.h;
+                        portfolioItem.low = item.l;
+                    }
+                    return portfolioItem;
+                });
+                localStorage.setItem("favorite", JSON.stringify(state.favorite));
+                localStorage.setItem("portfolio", JSON.stringify(state.portfolio));
+            }
+        });
     }
 });
 

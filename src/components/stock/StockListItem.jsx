@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, UpdatePortfolio, AddToPortfolio, Avatar } from '../';
 import { removeFromFavorite, addToFavorite } from '../../features/local/localSlice';
+import { getGlobalQuote } from '../../features/stock/stockSlice';
 import { starEmptyIcon, starFillIcon, walletFillIcon, walletIcon, chartIcon } from '../../assets/img/icons';
 import './styles/StockListItem.css'
 
@@ -15,6 +16,14 @@ const StockListItem = ({item, index, className, setAlert}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
+
+    useEffect(() => {
+        const promis = dispatch(getGlobalQuote(item.symbol));
+
+        return () => {
+            promis.abort();
+        }
+    }, []);
 
     return (
         <div
@@ -117,8 +126,8 @@ const StockListItem = ({item, index, className, setAlert}) => {
                 <div className="list-item-name-title">{item.name}</div>
             </div>
             <div className="list-item-price">
-                <div className="list-item-last-price">{item.price}</div>
-                {/* <div className={`list-item-change${item.priceChange > 0 ? ' list-item-last-change-positive' : item.priceChange < 0 ? ' list-item-last-change-negative' : ''}`}>{item.priceChange > 0 && '+'}{item.priceChange}</div> */}
+                <div className="list-item-last-price">{item.price || <span className="text-secondary">0.0</span>}</div>
+                <div className={`list-item-change${item.change > 0 ? ' list-item-last-change-positive' : item.change < 0 ? ' list-item-last-change-negative' : ''}`}>{item.change > 0 && '+'}{item.change || <span className="text-secondary">0.0</span>}</div>
             </div>
         </div>
     )

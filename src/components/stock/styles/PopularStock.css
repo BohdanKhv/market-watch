@@ -28,6 +28,7 @@
 .popular-stock-logo {
     width: 40px;
     height: 40px;
+    min-width: 40px;
     position: relative;
 }
 .popular-stock-logo img {

@@ -28,11 +28,11 @@ const PopularStock = ({item, className, menuItems}) => {
                         </h5> */}
                     </div>
                     <span className="fs-12">
-                        {item.price ? item.price.toString().replace('-', '') : '0.00'}
+                        {item.price ? item.price?.toString()?.replace('-', '') : '0.00'}
                     </span>
-                    {/* <span className={`${+item.priceChange > 0 ? "text-success" : +item.priceChange < 0 ? 'text-danger' : 'text-secondary'}`}>
-                        {+item.priceChange > 0 ? "+" : +item.priceChange < 0 ? '-' : ''}{item.priceChange?.replace('-', '')}
-                    </span> */}
+                    <span className={`${+item?.changePercent > 0 ? "text-success" : +item?.changePercent < 0 ? 'text-danger' : 'text-secondary'}`}>
+                        {+item?.changePercent > 0 ? "+" : +item?.changePercent < 0 ? '-' : ''}{item?.changePercent ? item?.changePercent?.toString().replace('-', '') : '0'}%
+                    </span>
                 </div>
             </div>
         </div>

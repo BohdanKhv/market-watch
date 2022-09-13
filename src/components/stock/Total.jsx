@@ -42,7 +42,7 @@ const Total = ({portfolio}) => {
                         <div className="pt-2 px-1 grid">
                             <div className="w-min-0">
                                 <div className="fs-16 text-ellipsis">
-                                    ${totalPortfolioValue}
+                                    ${Number(totalPortfolioValue) || <span className="text-secondary">0.0</span>}
                                 </div>
                             </div>
                         </div>
