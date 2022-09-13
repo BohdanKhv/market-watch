@@ -95,13 +95,13 @@ const ShareWatchlist = () => {
                   <h4 className="weight-500 p-3 border-bottom mb-1">
                     Best of the day
                   </h4>
-                  <PopularStock item={[...favorite].sort((a, b) => +b.priceChange - +a.priceChange)[0]} />
+                  <PopularStock item={[...favorite].sort((a, b) => (+b.changePercent || 0) - (+a.changePercent || 0))[0]} />
                 </div>
                 <div className="flex-grow-1">
                   <h4 className="weight-500 p-3 border-bottom mb-1">
                     Worst of the day
                   </h4>
-                  <PopularStock item={[...favorite].sort((a, b) => +a.priceChange - +b.priceChange)[0]} />
+                  <PopularStock item={[...favorite].sort((a, b) => (+a.changePercent || 0) - (+b.changePercent || 0))[0]} />
                 </div>
               </div>
             </Box>

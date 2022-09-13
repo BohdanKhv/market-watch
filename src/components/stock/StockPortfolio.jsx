@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { addCommaToNumber, numberFormatter, getOneSymbolPercentHoldings } from '../../assets/utils';
 import { chartIcon, starEmptyIcon, starFillIcon, trashIcon, walletFillIcon } from '../../assets/img/icons';
 import { removeFromPortfolio, removeFromFavorite, addToFavorite } from '../../features/local/localSlice';
 import { Menu, UpdatePortfolio, Avatar } from '../';
+import { getGlobalQuote } from '../../features/stock/stockSlice';
 import './styles/StockPortfolio.css'
 
 const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
@@ -23,6 +24,14 @@ const PopularStock = ({item, portfolioValue, className, index, setAlert}) => {
             return addCommaToNumber(numberFormatter(n));
         }
     }
+
+    useEffect(() => {
+        const promis = dispatch(getGlobalQuote(item.symbol));
+
+        return () => {
+            promis.abort();
+        }
+    }, []);
 
     return (
         item &&

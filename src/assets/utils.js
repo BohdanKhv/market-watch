@@ -11,7 +11,7 @@ const numberFormatter = (_number) => {
 
 const getTotalPortfolioValue = (portfolio) => {
     const result = portfolio.reduce((acc, curr) => {
-        return acc + curr.price * curr.quantity;
+        return acc + (+curr.price || 0) * (+curr.quantity || 0);
     }, 0);
     return result.toFixed(0);
 }
@@ -47,7 +47,7 @@ const getTopGain = (portfolio) => {
 
 const getPnl = (portfolio) => {
     const result = portfolio.reduce((acc, curr) => {
-        return acc + (+curr.price * +curr.quantity - +curr.averagePrice * +curr.quantity);
+        return acc + ((+curr.price || 0)* (+curr.quantity || 0) - (+curr.averagePrice || 0) * (+curr.quantity || 0));
     }, 0);
     return result.toFixed(0);
 }
