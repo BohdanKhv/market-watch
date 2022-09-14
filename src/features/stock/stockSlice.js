@@ -3,6 +3,7 @@ import stockService from "./stockService";
 
 const initialState = {
     globalQuote: [],
+    sharedStocks: [],
     loading: false,
 };
 
@@ -31,8 +32,15 @@ const stockSlice = createSlice({
     reducers: {
         resetStock: (state) => {
             state.globalQuote = [];
+            state.sharedStocks = [];
             state.loading = false;
-        }
+        },
+        resetSharedStocks: (state) => {
+            state.sharedStocks = [];
+        },
+        setSharedStocks: (state, action) => {
+            state.sharedStocks = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -42,6 +50,21 @@ const stockSlice = createSlice({
             .addCase(getGlobalQuote.fulfilled, (state, action) => {
                 state.loading = false;
                 state.globalQuote.push(action.payload);
+
+                if(action.payload) {
+                    let item = action.payload;
+                    state.sharedStocks = state.sharedStocks.map((sharedItem) => {
+                        if (sharedItem.symbol.toLowerCase() === item.symbol.toLowerCase()) {
+                            sharedItem.price = item.c;
+                            sharedItem.change = item.d;
+                            sharedItem.changePercent = item.dp;
+                            sharedItem.open = item.o;
+                            sharedItem.high = item.h;
+                            sharedItem.low = item.l;
+                        }
+                        return sharedItem;
+                    });
+                }
             })
             .addCase(getGlobalQuote.rejected, (state) => {
                 state.loading = false;
@@ -50,6 +73,6 @@ const stockSlice = createSlice({
 });
 
 
-export const { resetStock } = stockSlice.actions;
+export const { resetStock, resetSharedStocks, setSharedStocks } = stockSlice.actions;
 
 export default stockSlice.reducer;

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { setSharedStocks, resetSharedStocks } from '../features/stock/stockSlice'
 import { shareIcon } from '../assets/img/icons'
 import { Box, StockListItem, PopularStock, Alert } from '../components'
 import stocks from '../assets/data/stocks.json'
@@ -8,14 +10,15 @@ import stocks from '../assets/data/stocks.json'
 const ShareWatchlist = () => {
   const [alert, setAlert] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
-  const [items, setItems] = useState([]);
+  const { sharedStocks } = useSelector(state => state.stock);
+  const dispatch = useDispatch();
 
   const watchlistMenuItems = [
     {
       title: "Share",
       icon: shareIcon,
       onClick: () => {
-        const str = '?q=' + items.map(item => item.symbol).join(',');
+        const str = '?q=' + sharedStocks.map(item => item.symbol).join(',');
         const domain = window.location.origin;
         const url = domain + "/" + str;
         navigator.clipboard.writeText(url);
@@ -47,7 +50,11 @@ const ShareWatchlist = () => {
         }
       })
 
-      setItems(items);
+      dispatch(setSharedStocks(items));
+    }
+
+    return () => {
+      dispatch(resetSharedStocks());
     }
   }, [searchParams])
 
@@ -59,28 +66,28 @@ const ShareWatchlist = () => {
   return (
     <div className="content-body">
       {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
-      {items.length > 0 ? (
+      {sharedStocks.length > 0 ? (
       <div className="flex justify-between gap-4 flex-sm-col">
         <div className="flex-grow-2 order-sm-2">
           <Box title="Watchlist" secondary="Shared" menuItems={watchlistMenuItems} size="lg">
             <div className="flex flex-col">
-              {items.map((item, index) => (
+              {sharedStocks.map((item, index) => (
                 <StockListItem
                   key={index}
                   item={item}
                   index={index}
                   setAlert={setAlert}
                   className={
-                    index === 0 && index+1 === items.length ? 'border-t-r border-b-r' :
+                    index === 0 && index+1 === sharedStocks.length ? 'border-t-r border-b-r' :
                     index === 0 ? 'border-t-r border-bottom' :
-                    index+1 === items.length ? 'border-b-r' : 'border-bottom'
+                    index+1 === sharedStocks.length ? 'border-b-r' : 'border-bottom'
                   }
                 />
               ))}
             </div>
           </Box>
         </div>
-        {items.length > 4 && (
+        {sharedStocks.length > 4 && (
           <div className="flex flex-col flex-grow-1 gap-4 order-sm-1">
             <Box title="Performance" size="lg">
               <div className="flex flex-col flex-sm-row">
@@ -88,13 +95,13 @@ const ShareWatchlist = () => {
                   <h4 className="weight-500 p-3 border-bottom mb-1">
                     Best of the day
                   </h4>
-                  <PopularStock item={[...items].sort((a, b) => (+b.changePercent || 0) - (+a.changePercent || 0))[0]} />
+                  <PopularStock item={[...sharedStocks].sort((a, b) => (+b.changePercent || 0) - (+a.changePercent || 0))[0]} />
                 </div>
                 <div className="flex-grow-1">
                   <h4 className="weight-500 p-3 border-bottom mb-1">
                     Worst of the day
                   </h4>
-                  <PopularStock item={[...items].sort((a, b) => (+a.changePercent || 0) - (+b.changePercent || 0))[0]} />
+                  <PopularStock item={[...sharedStocks].sort((a, b) => (+a.changePercent || 0) - (+b.changePercent || 0))[0]} />
                 </div>
               </div>
             </Box>

@@ -31,7 +31,7 @@ const PopularStock = ({item, className, menuItems}) => {
                         {item.price ? item.price?.toString()?.replace('-', '') : '0.00'}
                     </span>
                     <span className={`${+item?.changePercent > 0 ? "text-success" : +item?.changePercent < 0 ? 'text-danger' : 'text-secondary'}`}>
-                        {+item?.changePercent > 0 ? "+" : +item?.changePercent < 0 ? '-' : ''}{item?.changePercent ? item?.changePercent?.toString().replace('-', '') : '0'}%
+                        {+item?.changePercent > 0 ? "+" : +item?.changePercent < 0 ? '-' : ''}{item?.changePercent ? item?.changePercent?.toFixed(2)?.toString().replace('-', '') : '0'}%
                     </span>
                 </div>
             </div>

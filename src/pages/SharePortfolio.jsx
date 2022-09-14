@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { setSharedStocks, resetSharedStocks } from '../features/stock/stockSlice'
 import { shareIcon } from '../assets/img/icons'
 import { getTotalPortfolioValue } from '../assets/utils'
 import { Box, StockPortfolio, Summary, Total, Alert } from '../components'
@@ -9,21 +11,22 @@ import stocks from '../assets/data/stocks.json'
 const SharePortfolio = () => {
   const [alert, setAlert] = useState('')
   const [searchParams, setSearchParams] = useSearchParams();
-  const [items, setItems] = useState([]);
+  const { sharedStocks } = useSelector(state => state.stock);
+  const dispatch = useDispatch();
   const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
 
   useEffect(() => {
-    if(items.length > 0) {
-      setTotalPortfolioValue(getTotalPortfolioValue(items));
+    if(sharedStocks.length > 0) {
+      setTotalPortfolioValue(getTotalPortfolioValue(sharedStocks));
     }
-  }, [items])
+  }, [sharedStocks])
 
   const listMenuItems = [
     {
       title: "Share",
       icon: shareIcon,
       onClick: () => {
-        const str = '?q=' + items
+        const str = '?q=' + sharedStocks
         .map(item =>
           item.symbol.toUpperCase() + ":"
         + item.quantity + ":"
@@ -66,7 +69,11 @@ const SharePortfolio = () => {
 
       })
 
-      setItems(arr);
+      dispatch(setSharedStocks(arr));
+    }
+
+    return () => {
+      dispatch(resetSharedStocks());
     }
   }, [searchParams])
 
@@ -78,7 +85,7 @@ const SharePortfolio = () => {
   return (
     <div className="content-body">
     {alert.length > 0 && <Alert msg={alert} type='success' setAlert={setAlert} />}
-      {items.length > 0 ? (
+      {sharedStocks.length > 0 ? (
       <div className="flex justify-between gap-4 flex-sm-col flex-wrap">
         <div className="flex-grow-2 order-sm-2">
             <Box title="Portfolio" menuItems={listMenuItems} size="lg">
@@ -97,7 +104,7 @@ const SharePortfolio = () => {
                     Curr
                   </div>
                 </div>
-                {items.map((item, index) => (
+                {sharedStocks.map((item, index) => (
                   <StockPortfolio
                     key={index}
                     item={item}
@@ -105,7 +112,7 @@ const SharePortfolio = () => {
                     portfolioValue={totalPortfolioValue}
                     setAlert={setAlert}
                     className={
-                      index+1 === items.length ? 'border-b-r' : 'border-bottom'
+                      index+1 === sharedStocks.length ? 'border-b-r' : 'border-bottom'
                     }
                   />
                 ))}
@@ -118,8 +125,8 @@ const SharePortfolio = () => {
               Summary
             </h2>
             <div className="flex flex-col gap-3 flex-sm-row">
-                <Total portfolio={items}/>
-                <Summary portfolio={items}/>
+                <Total portfolio={sharedStocks}/>
+                <Summary portfolio={sharedStocks}/>
             </div>
           </div>
         </div>
