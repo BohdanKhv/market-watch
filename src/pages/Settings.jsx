@@ -13,7 +13,7 @@ const Settings = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = 'STOKIN - Settings';
+        document.title = 'SeaShare - Settings';
         window.scrollTo(0, 0);
     }, [])
 

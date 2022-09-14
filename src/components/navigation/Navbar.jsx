@@ -35,7 +35,7 @@ const Navbar = () => {
               <img src={logo} alt="logo" />
             </span>
             <h2 className="company">
-              STOKIN
+              SeaShare
             </h2>
           </NavLink>
           <div className="navbar-top-links">

@@ -43,7 +43,7 @@ const Portfolio = () => {
   ]
 
   useEffect(() => {
-    document.title = 'STOKIN - Portfolio';
+    document.title = 'SeaShare - Portfolio';
     window.scrollTo(0, 0);
   }, [])
 

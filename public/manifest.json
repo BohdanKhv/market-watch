@@ -1,6 +1,6 @@
 {
-  "short_name": "STOKIN",
-  "name": "Stock Market Portfolio App",
+  "short_name": "SeaShare",
+  "name": "Share your stock market watchlist or portfolio",
   "icons": [
     {
       "src": "./icons/favicon.ico",

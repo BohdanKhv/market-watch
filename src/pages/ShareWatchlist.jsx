@@ -59,7 +59,7 @@ const ShareWatchlist = () => {
   }, [searchParams])
 
   useEffect(() => {
-    document.title = 'STOKIN - Shared Watchlist';
+    document.title = 'SeaShare - Shared Watchlist';
     window.scrollTo(0, 0);
   }, [])
 

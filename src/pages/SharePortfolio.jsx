@@ -78,7 +78,7 @@ const SharePortfolio = () => {
   }, [searchParams])
 
   useEffect(() => {
-    document.title = 'STOKIN - Shared Portfolio';
+    document.title = 'SeaShare - Shared Portfolio';
     window.scrollTo(0, 0);
   }, [])
 

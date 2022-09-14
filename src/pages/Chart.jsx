@@ -1,9 +1,14 @@
+import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { ChartView, StockSearch } from '../components'
 import stock from '../assets/data/stocks.json'
 
 const Chart = () => {
     const { symbol } = useParams();
+
+    useEffect(() => {
+        document.title = 'SeaShare | ' + symbol + " | Stocks - Chart";
+    }, [symbol])
 
     return (
         symbol &&

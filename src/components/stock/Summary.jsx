@@ -63,11 +63,11 @@ const Summary = ({portfolio}) => {
                             </div>
                             <div className="flex-b-50 w-min-0 text-end">
                                 <div className="fs-12 text-ellipsis text-success">
-                                    {topGain.amount > 0 ?
+                                    {topGain.amount > 0 &&
                                     <>
                                     + {Number(topGain.amount) ? format(topGain.amount?.toFixed(0))?.replace('-', '') : <span className="text-secondary">0.0</span>}
                                     </>
-                                    : <span className="text-secondary">-</span>}
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -88,11 +88,11 @@ const Summary = ({portfolio}) => {
                             </div>
                             <div className="flex-b-50 w-min-0 text-end">
                                 <div className="fs-12 text-ellipsis text-danger">
-                                    {topLoss.amount < 0 ?
+                                    {topLoss.amount < 0 &&
                                     <>
                                         - {Number(topLoss.amount) ? format(topLoss.amount?.toFixed(0))?.replace('-', '') : <span className="text-secondary">0.0</span>}
                                     </>
-                                    : <span className="text-secondary">-</span>}
+                                    }
                                 </div>
                             </div>
                         </div>
