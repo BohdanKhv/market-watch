@@ -15,7 +15,7 @@
     font-weight: 400;
     overflow: hidden;
     user-select: none;
-    color: #2a2e39;
+    color: #fff;
     background-color: #5d606b;
     transition: var(--transition-duration);
 }

@@ -47,6 +47,7 @@
 
 .list-item-price {
     display: flex;
+    gap: 0.25rem;
     justify-content: space-between;
     flex-direction: column;
     align-items: flex-end;

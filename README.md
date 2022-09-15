@@ -6,4 +6,8 @@
 3. Run `npm start` in the root directory to start the server
 
 ## Live demo
-http://stokin.s3-website.us-east-2.amazonaws.com/portfolio
+note: the live demo has http, not https. Browser will not allow you to use share button.
+http://stokin.s3-website.us-east-2.amazonaws.com
+
+## Https demo
+https://corngif.com
