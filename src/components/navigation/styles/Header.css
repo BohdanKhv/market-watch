@@ -36,6 +36,11 @@
     display: none;
 }
 
+.header-right .date {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+}
 
 @media (max-width: 769px) {
     .header-wrapper {
@@ -44,11 +49,12 @@
     .header {
         flex-direction: column;
         padding: 8px 16px;
+        gap: 8px;
         height: auto;
     }
     .header-left {
         width: 100%;
-        order: 2;
+        /* order: 2; */
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -56,8 +62,8 @@
     }
     .header-right {
         width: 100%;
-        order: 1;
-        display: none;
+        /* order: 1; */
+        /* display: none; */
     }
     .header .input-wrapper {
         flex-grow: 1;
@@ -74,5 +80,16 @@
     .header-logo-wrapper h3 {
         font-size: 28px;
         font-weight: 400;
+    }
+
+    .header-right .date {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .header-right .date span:first-of-type {
+        order: 2;
+    }
+    .header-right .date span:last-of-type {
+        text-align: end;
     }
 }

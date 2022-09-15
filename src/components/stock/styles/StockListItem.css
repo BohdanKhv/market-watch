@@ -19,9 +19,9 @@
 
 .list-item-logo {
     overflow: hidden;
-    width: 35px;
-    height: 35px;
-    min-width: 35px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
 }
 .list-item-logo img {
     width: 100%;
@@ -39,6 +39,8 @@
 
 .list-item-symbol {
     font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 .list-item-name-title {
     font-size: 14px;
@@ -53,11 +55,12 @@
     align-items: flex-end;
 }
 .list-item-last-price {
-    font-weight: 500;
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 16px;
 }
 .list-item-change {
     opacity: 0.5;
+    text-align: end;
 }
 .list-item-last-change-negative {
     color: var(--color-danger);
@@ -80,6 +83,7 @@
 
 @media (max-width: 769px) {
     .list-item {
+        gap: 0.65rem!important;
         padding: 1rem 0.75rem;
     }
 }

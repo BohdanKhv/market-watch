@@ -127,7 +127,12 @@ const StockListItem = ({item, index, className, setAlert}) => {
             </div>
             <div className="list-item-price">
                 <div className="list-item-last-price">{item.price || <span className="text-secondary">0.0</span>}</div>
-                <div className={`list-item-change${item.changePercent > 0 ? ' list-item-last-change-positive' : item.changePercent < 0 ? ' list-item-last-change-negative' : ''}`}>{item.changePercent > 0 && '+'}{item.changePercent?.toFixed(2) || <span className="text-secondary">0</span>}%</div>
+                <div className={`list-item-change${item.changePercent > 0 ? ' list-item-last-change-positive' : item.changePercent < 0 ? ' list-item-last-change-negative' : ''}`}>
+                    {item.changePercent > 0 && '+'}{item.changePercent?.toFixed(2) || <span className="text-secondary">0</span>}%
+                </div>
+                <div className={`list-item-change${item.changePercent > 0 ? ' list-item-last-change-positive' : item.changePercent < 0 ? ' list-item-last-change-negative' : ''}`}>
+                    {item.change > 0 && '+'}{item.change?.toFixed(2) || <span className="text-secondary">0</span>}
+                </div>
             </div>
         </div>
     )
